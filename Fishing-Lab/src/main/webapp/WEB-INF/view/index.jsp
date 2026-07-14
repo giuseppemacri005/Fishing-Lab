@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Fishing Lab - Home</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/home.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/Home.css">
 </head>
 <body>
 
