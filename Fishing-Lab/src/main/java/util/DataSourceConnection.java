@@ -13,9 +13,9 @@ public class DataSourceConnection {
         
         // Configurazione del driver e del database
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/nome_del_tuo_db?useSSL=false&serverTimezone=UTC");
-        dataSource.setUsername("tuo_utente");
-        dataSource.setPassword("tua_password");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/fishing-lab-db?useSSL=false&serverTimezone=UTC");
+        dataSource.setUsername("root");
+        dataSource.setPassword("Sonogiuseppe2005.");
 
         // Configurazione del Pool
         dataSource.setMinIdle(5);       // Connessioni minime sempre pronte

@@ -1,247 +1,229 @@
-@charset "UTF-8";/* ==========================================
-   1. RESET E VARIABILI GLOBALI
+@charset "UTF-8";
+
+/* ==========================================
+   1. COLORI E IMPOSTAZIONI BASE
    ========================================== */
 :root {
-    --primary-color: #0b3c5d;      /* Blu Scuro Oceano */
-    --secondary-color: #328cc1;    /* Blu Chiaro Acqua */
-    --accent-color: #ff6f59;       /* Corallo (per pulsanti e notifiche) */
-    --bg-color: #f4f7f6;           /* Grigio chiarissimo/acqua sbiadito */
-    --text-color: #1d2731;         /* Antracite per massima leggibilità */
-    --card-bg: #ffffff;            /* Bianco per le schede */
+    --primary: #1e3d59;        /* Blu notte elegante */
+    --accent: #17b978;         /* Verde acqua brillante (per i pulsanti e il badge) */
+    --bg-body: #f8f9fa;        /* Grigio chiarissimo per lo sfondo */
+    --text-dark: #222831;      /* Quasi nero per i testi */
+    --text-muted: #848a96;     /* Grigio per descrizioni e testi secondari */
+    --white: #ffffff;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    line-height: 1.6;
+    background-color: var(--bg-body);
+    color: var(--text-dark);
+    line-height: 1.5;
 }
 
 /* ==========================================
-   2. ELEMENTI DI EFFETTO (Aquarium & Messaggi)
+   2. ELEMENTI DI SUPPORTO (Banner & Feedback)
    ========================================== */
-/* Trasformiamo l'acquario in un bellissimo gradiente di sfondo iniziale */
+/* Un banner superiore molto sottile e discreto al posto del gradiente pesante */
 .aquarium {
-    height: 120px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    position: relative;
-    overflow: hidden;
+    height: 8px;
+    background-color: var(--primary);
 }
 
-/* Stile per il messaggio di conferma AJAX */
+/* Notifica pop-up minimale ed elegante */
 #messaggio-conferma {
-    display: none; /* Nascondi di default, gestito dal tuo JS */
+    display: none;
     position: fixed;
-    top: 20px;
+    bottom: 20px;
     right: 20px;
-    background-color: #2ecc71; /* Verde successo */
-    color: white;
-    padding: 15px 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 12px 20px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-size: 0.9rem;
+    font-weight: 500;
     z-index: 1000;
-    font-weight: bold;
-    animation: slideIn 0.3s ease-out;
 }
 
 /* ==========================================
-   3. NAVBAR (Barra di Navigazione)
+   3. BARRA DI NAVIGAZIONE
    ========================================== */
 nav {
-    background-color: var(--primary-color);
+    background-color: var(--white);
+    border-bottom: 1px solid #e1e8ed;
     padding: 15px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
-    z-index: 99;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 100;
 }
 
-/* Logo "Fishing Lab" */
+/* Scritta Fishing Lab */
 nav > a:first-child {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
+    color: var(--primary);
+    font-size: 1.3rem;
+    font-weight: 700;
     text-decoration: none;
-    transition: transform 0.2s;
 }
 
-nav > a:first-child:hover {
-    transform: scale(1.05);
-}
-
-/* Barra di Ricerca */
+/* Input di Ricerca */
 nav form {
     display: flex;
-    flex-grow: 0.5;
-    max-width: 500px;
-    margin: 0 20px;
+    max-width: 400px;
+    flex-grow: 1;
+    margin: 0 30px;
 }
 
 nav input[type="search"] {
     width: 100%;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 20px 0 0 20px;
+    padding: 8px 16px;
+    border: 1px solid #ccd6dd;
+    border-right: none;
+    border-radius: 6px 0 0 6px;
     outline: none;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
 nav form button {
-    background-color: var(--secondary-color);
-    border: none;
-    padding: 0 15px;
-    border-radius: 0 20px 20px 0;
+    background-color: #f5f8fa;
+    border: 1px solid #ccd6dd;
+    padding: 0 16px;
+    border-radius: 0 6px 6px 0;
     cursor: pointer;
-    color: white;
-    transition: background 0.2s;
 }
 
-nav form button:hover {
-    background-color: #28729e;
-}
-
-/* Blocco Utente e Carrello */
+/* Sezione Account e Carrello */
 nav div {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 nav div a, nav div span {
-    color: white;
+    color: var(--text-dark);
     text-decoration: none;
+    font-size: 0.9rem;
     font-weight: 500;
 }
 
 nav div a:hover {
-    color: var(--accent-color);
+    color: var(--primary);
 }
 
-/* Badge del Carrello */
+/* Badge Carrello */
 #carrello-badge {
-    background-color: var(--accent-color);
-    color: white;
-    border-radius: 50%;
-    padding: 2px 7px;
-    font-size: 0.8rem;
-    position: relative;
-    top: -8px;
-    left: -2px;
+    background-color: var(--accent);
+    color: var(--white);
+    font-size: 0.75rem;
     font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: 2px;
 }
 
 /* ==========================================
-   4. CATALOGO E PRODOTTI (Griglia)
+   4. CATALOGO PRODOTTI
    ========================================== */
-/* Contenitore principale */
-main-content, div:has(> h2) { 
-    max-width: 1200px;
+/* Contenitore */
+div:has(> h2) {
+    max-width: 1100px;
     margin: 40px auto;
     padding: 0 20px;
 }
 
 h2 {
-    font-size: 2rem;
-    margin-bottom: 25px;
-    color: var(--primary-color);
-    border-bottom: 3px solid var(--secondary-color);
-    padding-bottom: 10px;
-    display: inline-block;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: var(--primary);
 }
 
-/* Griglia Responsiva */
+/* Griglia dei prodotti */
 .product-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
 }
 
-/* La singola scheda Prodotto */
+/* Scheda Prodotto */
 .product-card {
-    background-color: var(--card-bg);
-    border-radius: 12px;
+    background-color: var(--white);
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
 }
 
-/* Immagine Prodotto */
+/* Immagine */
 .product-card img {
     width: 100%;
-    height: 220px;
-    object-fit: cover; /* Evita che l'immagine si distorca */
-    background-color: #f9f9f9;
+    height: 200px;
+    object-fit: cover;
+    background-color: #f5f8fa;
+    border-bottom: 1px solid #e1e8ed;
 }
 
-/* Informazioni dentro la scheda */
+/* Contenuto Scheda */
 .product-card > div {
-    padding: 20px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Spinge il pulsante sempre in basso */
+    flex-grow: 1;
 }
 
 .product-card h5 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: var(--primary-color);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 6px;
 }
 
 .product-card p:nth-of-type(1) {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 15px;
-    flex-grow: 1; /* Fa sì che la descrizione prenda lo spazio necessario */
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    flex-grow: 1;
 }
 
 /* Prezzo */
 .product-card p:nth-of-type(2) {
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    margin-bottom: 15px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 12px;
 }
 
 /* Bottone Aggiungi */
 .product-card button {
-    background-color: var(--accent-color);
-    color: white;
+    background-color: var(--primary);
+    color: var(--white);
     border: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: bold;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
-    width: 100%;
+    transition: opacity 0.15s ease;
 }
 
 .product-card button:hover {
-    background-color: #e55b45;
+    opacity: 0.9;
 }
 
 .product-card button:active {
-    transform: scale(0.98);
-}
-
-/* Animation per il messaggio pop-up */
-@keyframes slideIn {
-    from { transform: translateX(120%); }
-    to { transform: translateX(0); }
+    transform: scale(0.97);
 }

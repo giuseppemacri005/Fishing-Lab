@@ -40,11 +40,27 @@
 </nav>
 
 <div>
+    <div>
     <h2>Il nostro Catalogo</h2>
     <div class="product-list">
         <% 
             List<Prodotto> prodotti = (List<Prodotto>) request.getAttribute("prodotti");
-            if (prodotti != null) {
+            
+            if (prodotti == null) { 
+        %>
+                <!-- CASO A: La servlet non sta passando i dati alla JSP -->
+                <p class="error-message">
+                    Errore: La lista 'prodotti' è NULL. Assicurati di accedere al sito tramite l'indirizzo della Servlet (es. /home) e non aprendo direttamente il file JSP.
+                </p>
+        <% 
+            } else if (prodotti.isEmpty()) { 
+        %>
+                <!-- CASO B: La connessione funziona ma non ci sono dati nel Database -->
+                <p class="error-message">
+                    Nessun prodotto trovato. Controlla che la tabella 'prodotto' del tuo database contenga dei dati.
+                </p>
+        <% 
+            } else {
                 for (Prodotto p : prodotti) {
         %>
                 <div class="product-card">
