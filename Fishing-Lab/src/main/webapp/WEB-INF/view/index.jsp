@@ -21,6 +21,13 @@
     <a href="${pageContext.request.contextPath}/home">Fishing Lab 🎣</a>
 
     <form action="${pageContext.request.contextPath}/CercaServlet" method="GET">
+    <select name="categoria">
+            <option value="tutti">Tutto</option>
+            <option value="canne">Canne</option>
+            <option value="mulinelli">Mulinelli</option>
+            <option value="esche">Esche</option>
+             <option value="attrezzatura">Attrezzatura</option>
+        </select>
         <input type="search" name="ricerca" placeholder="Cerca attrezzatura...">
         <button type="submit">🔍</button>
     </form>

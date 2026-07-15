@@ -90,6 +90,17 @@ nav input[type="search"] {
     outline: none;
     font-size: 0.9rem;
 }
+/* Stile per il menu a tendina */
+nav select {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px 0 0 20px; /* Arrotondato a sinistra */
+    outline: none;
+    font-size: 0.9rem;
+    background-color: white;
+    cursor: pointer;
+    border-right: 1px solid #ddd; /* Separatore visivo */
+}
 
 nav form button {
     background-color: #f5f8fa;
