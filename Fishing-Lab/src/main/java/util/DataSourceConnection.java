@@ -1,30 +1,24 @@
 package util;
 
-import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public class DataSourceConnection {
+    private static DataSource dataSource;
 
-    private static BasicDataSource dataSource;
-
-    static {
-        dataSource = new BasicDataSource();
-        
-        // Configurazione del driver e del database
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/fishing-lab-db?useSSL=false&serverTimezone=UTC");
-        dataSource.setUsername("root");
-        dataSource.setPassword("Sonogiuseppe2005.");
-
-        // Configurazione del Pool
-        dataSource.setMinIdle(5);       // Connessioni minime sempre pronte
-        dataSource.setMaxIdle(10);      // Connessioni massime in attesa
-        dataSource.setMaxTotal(25);     // Numero massimo totale di connessioni
-    }
-
-    // Metodo per ottenere la connessione
     public static Connection getConnection() throws SQLException {
+        if (dataSource == null) {
+            try {
+                Context initContext = new InitialContext();
+                Context envContext = (Context) initContext.lookup("java:comp/env");
+                dataSource = (DataSource) envContext.lookup("jdbc/fishing-lab-db");
+            } catch (Exception e) {
+                throw new SQLException("Errore nel recupero del DataSource dal Context", e);
+            }
+        }
         return dataSource.getConnection();
     }
 }

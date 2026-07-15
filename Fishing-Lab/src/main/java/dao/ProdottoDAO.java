@@ -30,11 +30,12 @@ public class ProdottoDAO {
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     Prodotto p = new Prodotto();
-                    p.setId_prodotto(rs.getInt("id"));
-                    p.setNome_prodotto(rs.getString("nome"));
+                    p.setId_prodotto(rs.getInt("id_prodotto"));
+                    p.setNome_prodotto(rs.getString("nome_prodotto"));
                     p.setDescrizione(rs.getString("descrizione"));
                     p.setPrezzo(rs.getDouble("prezzo"));
                     p.setImmagine(rs.getString("immagine"));
+                    p.setCategoria(rs.getString("categoria"));
                     lista.add(p);
                 }
             }

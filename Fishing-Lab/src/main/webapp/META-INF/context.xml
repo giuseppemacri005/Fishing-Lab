@@ -9,5 +9,5 @@
               username="root" 
               password="Sonogiuseppe2005."
               driverClassName="com.mysql.cj.jdbc.Driver"
-              url="jdbc:mysql://localhost:3306/fishing_lab_db?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"/>
+              url="jdbc:mysql://localhost:3306/fishing-lab-db?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"/>
 </Context>
