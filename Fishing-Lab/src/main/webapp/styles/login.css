@@ -1,0 +1,149 @@
+@charset "UTF-8";
+
+/* Reset di base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background-color: #e6f5f3; /* Sfondo verde acqua della Home */
+    color: #1e293b;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Centra la scheda di login verticalmente e orizzontalmente */
+.login-container {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 420px;
+    margin: auto; /* Centra la scheda nella pagina */
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(30, 61, 89, 0.08);
+    border: 1px solid #e2e8f0;
+}
+
+/* Header della scheda */
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-header .logo {
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: 850;
+    color: #1e3d59;
+    text-decoration: none;
+    margin-bottom: 15px;
+    letter-spacing: -0.8px;
+}
+
+.login-header h2 {
+    font-size: 1.4rem;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.login-header p {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+/* Box di errore rosso */
+.error-box {
+    background-color: #fee2e2;
+    color: #991b1b;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #fca5a5;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Gruppi dei campi di input */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: #1e293b;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+    border-color: #1e3d59;
+    box-shadow: 0 0 0 3px rgba(30, 61, 89, 0.15);
+}
+
+/* Bottone di Login */
+.btn-login {
+    width: 100%;
+    background-color: #1e3d59;
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(30, 61, 89, 0.15);
+    transition: background-color 0.2s, transform 0.1s;
+    margin-top: 10px;
+}
+
+.btn-login:hover {
+    background-color: #152c41;
+}
+
+.btn-login:active {
+    transform: scale(0.98);
+}
+
+/* Footer per la registrazione */
+.login-footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.login-footer a {
+    color: #1e3d59;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 30px 20px;
+        margin: 20px;
+        max-width: calc(100% - 40px);
+    }
+}
