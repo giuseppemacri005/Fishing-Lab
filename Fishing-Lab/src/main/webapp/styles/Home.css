@@ -1,17 +1,8 @@
 @charset "UTF-8";
 
 /* ==========================================
-   1. COLORI E IMPOSTAZIONI BASE
+   1. IMPOSTAZIONI BASE E RESET
    ========================================== */
-:root {
-    --primary: #1e3d59;        /* Blu notte elegante */
-    --accent: #17b978;         /* Verde acqua brillante (per i pulsanti e il badge) */
-    --bg-body: #f8f9fa;        /* Grigio chiarissimo per lo sfondo */
-    --text-dark: #222831;      /* Quasi nero per i testi */
-    --text-muted: #848a96;     /* Grigio per descrizioni e testi secondari */
-    --white: #ffffff;
-}
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -20,31 +11,30 @@
 }
 
 body {
-    background-color: var(--bg-body);
-    color: var(--text-dark);
+    background-color: #f8f9fa; /* Grigio chiarissimo per lo sfondo */
+    color: #222831;            /* Quasi nero per i testi */
     line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* ==========================================
    2. ELEMENTI DI SUPPORTO (Banner & Feedback)
    ========================================== */
-/* Un banner superiore molto sottile e discreto al posto del gradiente pesante */
 .aquarium {
     height: 8px;
-    background-color: var(--primary);
+    background-color: #1e3d59; /* Blu notte elegante */
 }
 
-/* Notifica pop-up minimale ed elegante */
 #messaggio-conferma {
     display: none;
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: var(--primary);
-    color: var(--white);
-    padding: 12px 20px;
-    border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #1e3d59; /* Blu notte elegante */
+    color: #ffffff;
+    padding: 14px 24px;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     font-size: 0.9rem;
     font-weight: 500;
     z-index: 1000;
@@ -53,8 +43,8 @@ body {
 /* ==========================================
    3. BARRA DI NAVIGAZIONE
    ========================================== */
-nav {
-    background-color: var(--white);
+.main-nav {
+    background-color: #ffffff;
     border-bottom: 1px solid #e1e8ed;
     padding: 15px 5%;
     display: flex;
@@ -63,178 +53,221 @@ nav {
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
-/* Scritta Fishing Lab */
-nav > a:first-child {
-    color: var(--primary);
-    font-size: 1.3rem;
-    font-weight: 700;
+/* Logo "Fishing Lab" */
+.nav-logo {
+    color: #1e3d59; /* Blu notte */
+    font-size: 1.4rem;
+    font-weight: 800;
     text-decoration: none;
+    letter-spacing: -0.5px;
 }
 
-/* Input di Ricerca */
-nav form {
+/* Form di Ricerca */
+.search-form {
     display: flex;
-    max-width: 400px;
+    max-width: 450px;
     flex-grow: 1;
     margin: 0 30px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    overflow: hidden; 
+    border: 1px solid #ccd6dd;
 }
 
-nav input[type="search"] {
-    width: 100%;
-    padding: 8px 16px;
-    border: 1px solid #ccd6dd;
-    border-right: none;
-    border-radius: 6px 0 0 6px;
-    outline: none;
-    font-size: 0.9rem;
-}
-/* Stile per il menu a tendina */
-nav select {
+/* Dropdown del Filtro Categoria */
+.search-select {
     padding: 10px 15px;
     border: none;
-    border-radius: 20px 0 0 20px; /* Arrotondato a sinistra */
     outline: none;
     font-size: 0.9rem;
-    background-color: white;
+    background-color: #f8f9fa;
     cursor: pointer;
-    border-right: 1px solid #ddd; /* Separatore visivo */
+    border-right: 1px solid #ccd6dd;
+    color: #222831;
 }
 
-nav form button {
+/* Campo di testo di ricerca */
+.search-input {
+    width: 100%;
+    padding: 10px 16px;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+/* Pulsante Cerca */
+.search-btn {
     background-color: #f5f8fa;
-    border: 1px solid #ccd6dd;
-    padding: 0 16px;
-    border-radius: 0 6px 6px 0;
+    border: none;
+    border-left: 1px solid #ccd6dd;
+    padding: 0 20px;
     cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
-/* Sezione Account e Carrello */
-nav div {
+.search-btn:hover {
+    background-color: #e1e8ed;
+}
+
+/* Area Utente & Carrello */
+.nav-user-actions {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
 }
 
-nav div a, nav div span {
-    color: var(--text-dark);
+.nav-link {
+    color: #222831;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 500;
+    transition: color 0.2s ease;
 }
 
-nav div a:hover {
-    color: var(--primary);
+.nav-link:hover {
+    color: #1e3d59; /* Passaggio al blu notte */
 }
 
-/* Badge Carrello */
-#carrello-badge {
-    background-color: var(--accent);
-    color: var(--white);
+/* Badge del Carrello */
+.cart-badge {
+    background-color: #17b978; /* Verde acqua brillante */
+    color: #ffffff;
     font-size: 0.75rem;
     font-weight: bold;
-    padding: 2px 6px;
-    border-radius: 10px;
-    margin-left: 2px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    margin-left: 4px;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 /* ==========================================
    4. CATALOGO PRODOTTI
    ========================================== */
-/* Contenitore */
-div:has(> h2) {
-    max-width: 1100px;
+/* Contenitore principale */
+.catalog-container {
+    max-width: 1200px;
     margin: 40px auto;
-    padding: 0 20px;
+    padding: 0 24px;
 }
 
-h2 {
-    font-size: 1.6rem;
-    font-weight: 600;
-    margin-bottom: 30px;
-    color: var(--primary);
+/* Titolo della Sezione */
+.section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #1e3d59; /* Blu notte */
+}
+
+/* Riga colorata sotto il titolo */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background-color: #17b978; /* Verde acqua */
+    border-radius: 2px;
+    margin-top: 8px;
 }
 
 /* Griglia dei prodotti */
 .product-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 30px;
 }
 
 /* Scheda Prodotto */
 .product-card {
-    background-color: var(--white);
+    background-color: #ffffff;
     border: 1px solid #e1e8ed;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Ombra morbida diretta */
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease;
 }
 
 .product-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
 
-/* Immagine */
-.product-card img {
+/* Immagine del Prodotto */
+.product-img {
     width: 100%;
-    height: 200px;
+    height: 220px;
     object-fit: cover;
     background-color: #f5f8fa;
     border-bottom: 1px solid #e1e8ed;
 }
 
-/* Contenuto Scheda */
-.product-card > div {
-    padding: 16px;
+/* Contenuto interno della scheda */
+.product-info {
+    padding: 20px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-.product-card h5 {
-    font-size: 1.05rem;
+/* Nome del Prodotto */
+.product-title {
+    font-size: 1.1rem;
     font-weight: 600;
-    color: var(--text-dark);
-    margin-bottom: 6px;
+    color: #222831;
+    margin-bottom: 8px;
+    line-height: 1.4;
 }
 
-.product-card p:nth-of-type(1) {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 12px;
+/* Descrizione Prodotto */
+.product-desc {
+    font-size: 0.88rem;
+    color: #848a96; /* Grigio per descrizioni */
+    margin-bottom: 16px;
     flex-grow: 1;
 }
 
 /* Prezzo */
-.product-card p:nth-of-type(2) {
-    font-size: 1.15rem;
+.product-price {
+    font-size: 1.25rem;
     font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 12px;
+    color: #1e3d59; /* Blu notte */
+    margin-bottom: 16px;
 }
 
 /* Bottone Aggiungi */
-.product-card button {
-    background-color: var(--primary);
-    color: var(--white);
+.add-to-cart-btn {
+    background-color: #1e3d59; /* Blu notte */
+    color: #ffffff;
     border: none;
-    padding: 10px;
-    border-radius: 6px;
+    padding: 12px;
+    border-radius: 8px;
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
-    transition: opacity 0.15s ease;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-.product-card button:hover {
-    opacity: 0.9;
+.add-to-cart-btn:hover {
+    background-color: #142a3e; /* Blu ancora più scuro al passaggio del mouse */
 }
 
-.product-card button:active {
+.add-to-cart-btn:active {
     transform: scale(0.97);
+}
+@media (max-width: 1024px) {
+    .product-card { width: calc(33.333% - 25px); }
+}
+
+@media (max-width: 768px) {
+    .product-card { width: calc(50% - 25px); }
+}
+
+@media (max-width: 480px) {
+    nav { flex-direction: column; gap: 15px; }
+    .product-card { width: 100%; margin-right: 0; }
 }
