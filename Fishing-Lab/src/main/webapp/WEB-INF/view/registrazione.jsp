@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <title>Fishing Lab - Registrati</title>
     
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/Registrazione.css?v=<%= System.currentTimeMillis() %>">
-</head>
-<body>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/Registrazione.css">
+<body>"
 
 <div class="register-container">
     
