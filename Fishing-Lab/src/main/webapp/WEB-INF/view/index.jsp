@@ -15,7 +15,7 @@
     Utente utente = (Utente) session.getAttribute("utente");
 %>
 
-<div class="aquarium"></div>
+
 
 <nav>
     <a href="${pageContext.request.contextPath}/home">Fishing Lab 🎣</a>
