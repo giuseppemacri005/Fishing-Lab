@@ -3,6 +3,7 @@
 /* ==========================================
    1. IMPOSTAZIONI BASE E RESET
    ========================================== */
+/* Questo blocco resetta i margini e imposta il font su tutta la pagina JSP */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,8 +12,8 @@
 }
 
 body {
-    background-color: #f8f9fa; /* Grigio chiarissimo per lo sfondo */
-    color: #222831;            /* Quasi nero per i testi */
+    background-color: #bee4e0; /* ---> Sfondo VERDE ACQUA chiaro, fresco e rilassante <--- */
+    color: #1e293b;            /* Blu ardesia scuro per rendere i testi leggibili */
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
 }
@@ -20,22 +21,20 @@ body {
 /* ==========================================
    2. ELEMENTI DI SUPPORTO (Banner & Feedback)
    ========================================== */
-.aquarium {
-    height: 8px;
-    background-color: #1e3d59; /* Blu notte elegante */
-}
 
+
+/* Collegato al messaggio di conferma generato dallo script JS alla fine della tua JSP */
 #messaggio-conferma {
     display: none;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #1e3d59; /* Blu notte elegante */
+    bottom: 24px;
+    right: 24px;
+    background-color: #1e3d59;
     color: #ffffff;
-    padding: 14px 24px;
-    border-radius: 8px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    font-size: 0.9rem;
+    padding: 16px 28px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(30, 61, 89, 0.2);
+    font-size: 0.95rem;
     font-weight: 500;
     z-index: 1000;
 }
@@ -43,231 +42,331 @@ body {
 /* ==========================================
    3. BARRA DI NAVIGAZIONE
    ========================================== */
-.main-nav {
-    background-color: #ffffff;
-    border-bottom: 1px solid #e1e8ed;
-    padding: 15px 5%;
+/* Collegato a: <nav> ... </nav> */
+nav {
+    background-color:#488aee; 
+    backdrop-filter: blur(8px);                 /* Effetto vetro sfocato sui browser moderni */
+    border-bottom: 1px solid #e2e8f0;
+    padding: 18px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
 
-/* Logo "Fishing Lab" */
-.nav-logo {
-    color: #1e3d59; /* Blu notte */
-    font-size: 1.4rem;
-    font-weight: 800;
+/* Collegato a: <nav> <a href="...">Fishing Lab 🎣</a> */
+nav > a:first-child {
+    color: #1e3d59; /* Blu Notte elegante */
+    font-size: 1.5rem;
+    font-weight: 850;
     text-decoration: none;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.8px;
 }
 
-/* Form di Ricerca */
-.search-form {
+/* Collegato a: <form action="..." method="GET"> della ricerca */
+nav form {
     display: flex;
-    max-width: 450px;
+    max-width: 460px;
     flex-grow: 1;
     margin: 0 30px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
-    border-radius: 8px;
+    border-radius: 30px; /* Arrotonda l'intera barra di ricerca in modo moderno */
     overflow: hidden; 
-    border: 1px solid #ccd6dd;
+    border: 1.5px solid #cbd5e1;
+    background-color: #ffffff;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* Dropdown del Filtro Categoria */
-.search-select {
-    padding: 10px 15px;
+/* Quando l'utente clicca per cercare, la barra si illumina leggermente di blu notte */
+nav form:focus-within {
+    border-color: #1e3d59;
+    box-shadow: 0 0 0 3px rgba(30, 61, 89, 0.15);
+}
+
+/* Collegato a: <select name="categoria"> all'interno del form di ricerca */
+nav select {
+    padding: 10px 18px;
     border: none;
     outline: none;
     font-size: 0.9rem;
-    background-color: #f8f9fa;
+    background-color: #f8fafc;
     cursor: pointer;
-    border-right: 1px solid #ccd6dd;
-    color: #222831;
+    border-right: 1.5px solid #cbd5e1;
+    color: #475569;
+    font-weight: 500;
 }
 
-/* Campo di testo di ricerca */
-.search-input {
+/* Collegato a: <input type="search" ...> all'interno del form di ricerca */
+nav input[type="search"] {
     width: 100%;
-    padding: 10px 16px;
+    padding: 10px 18px;
     border: none;
     outline: none;
     font-size: 0.9rem;
+    color: #1e293b;
 }
 
-/* Pulsante Cerca */
-.search-btn {
-    background-color: #f5f8fa;
+/* Collegato a: <button type="submit">🔍</button> del form di ricerca */
+nav form button {
+    background-color: #f8fafc;
     border: none;
-    border-left: 1px solid #ccd6dd;
-    padding: 0 20px;
+    padding: 0 22px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    color: #64748b;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.search-btn:hover {
-    background-color: #e1e8ed;
+nav form button:hover {
+    background-color: #f1f5f9;
+    color: #1e3d59;
 }
 
-/* Area Utente & Carrello */
-.nav-user-actions {
+/* Collegato a: <div> finale della nav (contiene il Carrello, il Ciao Utente o Accedi) */
+nav div {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 22px;
 }
 
-.nav-link {
-    color: #222831;
+/* Collegato a tutti i link (Accedi, Logout, Carrello) all'interno del div della nav */
+nav div a {
+    color: #475569;
     text-decoration: none;
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 600;
     transition: color 0.2s ease;
 }
 
-.nav-link:hover {
-    color: #1e3d59; /* Passaggio al blu notte */
+nav div a:hover {
+    color: #1e3d59;
 }
 
-/* Badge del Carrello */
-.cart-badge {
-    background-color: #17b978; /* Verde acqua brillante */
-    color: #ffffff;
+/* Collegato a: <span id="carrello-badge"> nella nav */
+#carrello-badge {
+    background-color: #e6ff00; /* ---> GIALLO FLUO ACCESO <--- */
+    color: #1e3d59;            /* Scritto in Blu Notte per essere super leggibile sul giallo */
     font-size: 0.75rem;
-    font-weight: bold;
-    padding: 3px 8px;
-    border-radius: 20px;
-    margin-left: 4px;
+    font-weight: 800;          /* Testo marcato */
+    padding: 4px 10px;
+    border-radius: 30px;
+    margin-left: 6px;
     display: inline-block;
     vertical-align: middle;
+    box-shadow: 0 3px 10px rgba(230, 255, 0, 0.5); /* Effetto bagliore giallo fluorescente */
+}
+
+/* Collegato al saluto dell'utente: <span>Ciao, Nome</span> */
+nav div span {
+    color: #475569;
+    font-size: 0.95rem;
+    font-weight: 500;
 }
 
 /* ==========================================
    4. CATALOGO PRODOTTI
    ========================================== */
-/* Contenitore principale */
-.catalog-container {
-    max-width: 1200px;
-    margin: 40px auto;
+/* Collegato a: <div> contenitore principale che racchiude il titolo h2 e la lista */
+div:has(> h2) {
+    max-width: 1240px;
+    margin: 50px auto;
     padding: 0 24px;
 }
 
-/* Titolo della Sezione */
-.section-title {
-    font-size: 1.75rem;
-    font-weight: 700;
-    margin-bottom: 24px;
-    color: #1e3d59; /* Blu notte */
+/* Collegato a: <h2>Il nostro Catalogo</h2> */
+h2 {
+    font-size: 1.85rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: #1e3d59; /* Blu Notte elegante */
+    letter-spacing: -0.5px;
 }
 
-/* Riga colorata sotto il titolo */
-.section-title::after {
+/* Genera una barra decorativa verde acqua sotto il titolo "Il nostro Catalogo" */
+h2::after {
     content: '';
     display: block;
-    width: 50px;
-    height: 4px;
-    background-color: #17b978; /* Verde acqua */
-    border-radius: 2px;
-    margin-top: 8px;
+    width: 45px;
+    height: 5px;
+    background: linear-gradient(90deg, #17b978, #109f64);
+    border-radius: 10px;
+    margin-top: 10px;
 }
 
-/* Griglia dei prodotti */
+/* Messaggi di errore se il DB è vuoto o la Servlet restituisce null */
+.error-message {
+    background-color: #fee2e2;
+    color: #991b1b;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #fca5a5;
+    font-weight: 500;
+    grid-column: 1 / -1; /* Occupa tutta la larghezza della griglia */
+}
+
+/* Collegato a: <div class="product-list"> */
 .product-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
     gap: 30px;
 }
 
-/* Scheda Prodotto */
+/* Collegato a: <div class="product-card"> (Scatola del singolo prodotto) */
 .product-card {
     background-color: #ffffff;
-    border: 1px solid #e1e8ed;
-    border-radius: 12px;
-    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    overflow: hidden; /* Taglia l'immagine che si ingrandisce all'hover per non farla uscire dai bordi */
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Ombra morbida diretta */
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
 }
 
+/* Effetto sollevamento quando l'utente passa sopra una scheda con il mouse */
 .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 30px rgba(30, 61, 89, 0.08);
+    border-color: #cbd5e1;
 }
 
-/* Immagine del Prodotto */
-.product-img {
+/* Collegato a: <img src="..."> all'interno della product-card */
+.product-card img {
     width: 100%;
-    height: 220px;
+    height: 230px;
     object-fit: cover;
-    background-color: #f5f8fa;
-    border-bottom: 1px solid #e1e8ed;
+    background-color: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-/* Contenuto interno della scheda */
-.product-info {
-    padding: 20px;
+/* Effetto zoom raffinato sull'immagine al passaggio del mouse sulla scheda */
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Collegato al <div> interno alla scheda prodotto (quello che racchiude i testi e il bottone) */
+.product-card > div {
+    padding: 24px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-/* Nome del Prodotto */
-.product-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #222831;
+/* Collegato a: <h5><%= p.getnome_prodotto() %></h5> */
+.product-card h5 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #0f172a;
     margin-bottom: 8px;
     line-height: 1.4;
 }
 
-/* Descrizione Prodotto */
-.product-desc {
-    font-size: 0.88rem;
-    color: #848a96; /* Grigio per descrizioni */
-    margin-bottom: 16px;
-    flex-grow: 1;
+/* Collegato al primo paragrafo: la descrizione <p><%= p.getDescrizione() %></p> */
+.product-card p:nth-of-type(1) {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    flex-grow: 1; /* Spinge il prezzo e il bottone verso il basso allineandoli sempre */
 }
 
-/* Prezzo */
-.product-price {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #1e3d59; /* Blu notte */
-    margin-bottom: 16px;
+/* Collegato al secondo paragrafo: il prezzo <p>€ <%= ... %></p> */
+.product-card p:nth-of-type(2) {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #1e3d59; /* Colore Blu Notte per evidenziare il prezzo */
+    margin-bottom: 20px;
 }
 
-/* Bottone Aggiungi */
-.add-to-cart-btn {
-    background-color: #1e3d59; /* Blu notte */
+/* Collegato a: <button type="button" onclick="...'>Aggiungi</button> */
+.product-card button {
+    background-color: #1e3d59;
     color: #ffffff;
     border: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 600;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 4px 12px rgba(30, 61, 89, 0.15);
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
 }
 
-.add-to-cart-btn:hover {
-    background-color: #142a3e; /* Blu ancora più scuro al passaggio del mouse */
+.product-card button:hover {
+    background-color: #152c41;
+    box-shadow: 0 6px 18px rgba(30, 61, 89, 0.25);
 }
 
-.add-to-cart-btn:active {
-    transform: scale(0.97);
-}
-@media (max-width: 1024px) {
-    .product-card { width: calc(33.333% - 25px); }
+.product-card button:active {
+    transform: scale(0.96); /* Effetto pressione del bottone */
 }
 
+
+/* ==========================================
+   5. MEDIA QUERIES (RESPONSIVE)
+   ========================================== */
+
+/* --- TABLET (Sotto i 900px) --- */
+@media (max-width: 900px) {
+    nav {
+        padding: 15px 4%;
+    }
+    
+    nav form {
+        margin: 0 15px;
+    }
+}
+
+/* --- DISPOSITIVI MOBILI (Sotto i 768px) --- */
 @media (max-width: 768px) {
-    .product-card { width: calc(50% - 25px); }
+    /* Impila gli elementi del menu in verticale */
+    nav {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+        border-radius: 0 0 16px 16px;
+    }
+
+    nav form {
+        width: 100%;
+        margin: 5px 0;
+        max-width: 100%;
+    }
+
+    /* Allinea le azioni utente sul fondo della nav */
+    nav div {
+        width: 100%;
+        justify-content: space-around;
+        border-top: 1px solid #e2e8f0;
+        padding-top: 12px;
+        gap: 10px;
+    }
+
+    div:has(> h2) {
+        margin: 30px auto;
+        padding: 0 16px;
+    }
+
+    .product-list {
+        gap: 20px;
+    }
 }
 
+/* --- SMARTPHONE PICCOLI (Sotto i 480px) --- */
 @media (max-width: 480px) {
-    nav { flex-direction: column; gap: 15px; }
-    .product-card { width: 100%; margin-right: 0; }
+    nav select {
+        padding: 10px 10px;
+        font-size: 0.85rem;
+    }
+    
+    nav input[type="search"] {
+        padding: 10px 10px;
+        font-size: 0.85rem;
+    }
+
+    .product-card img {
+        height: 200px;
+    }
 }
