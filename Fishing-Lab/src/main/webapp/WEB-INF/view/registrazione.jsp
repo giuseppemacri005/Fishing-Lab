@@ -6,7 +6,8 @@
     <title>Fishing Lab - Registrati</title>
     
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/Registrazione.css">
-<body>"
+</head>
+<body>
 
 <div class="register-container">
     
@@ -29,7 +30,7 @@
     <% } %>
 
     <!-- Form di Registrazione che punta alla tua Servlet di registrazione -->
-    <form action="${pageContext.request.contextPath}/RegistrazioneServlet" method="POST">
+    <form action="${pageContext.request.contextPath}/RegisterServlet" method="POST">
         
        
         <div class="form-row">
@@ -50,12 +51,8 @@
             <input type="email" id="email" name="email" placeholder="mario.rossi@esempio.com" required autocomplete="email">
         </div>
 
-        <div class="form-group">
-            <label for="username">Nome utente (Username)</label>
-            <input type="text" id="username" name="username" placeholder="Scegli un username" required autocomplete="username">
-        </div>
-
-        <div class="form-group">
+        
+       <div class="form-group">
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Minimo 8 caratteri" required autocomplete="new-password">
         </div>

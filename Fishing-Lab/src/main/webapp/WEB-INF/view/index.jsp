@@ -15,25 +15,24 @@
     Utente utente = (Utente) session.getAttribute("utente");
 %>
 
-
-
 <nav>
     <a href="${pageContext.request.contextPath}/home">Fishing Lab 🎣</a>
 
     <form action="${pageContext.request.contextPath}/CercaServlet" method="GET">
-    <select name="categoria">
+        <select name="categoria">
             <option value="tutti">Tutto</option>
             <option value="canne">Canne</option>
             <option value="mulinelli">Mulinelli</option>
             <option value="esche">Esche</option>
-             <option value="attrezzatura">Attrezzatura</option>
+            <option value="attrezzatura">Attrezzatura</option>
         </select>
         <input type="search" name="ricerca" placeholder="Cerca attrezzatura...">
         <button type="submit">🔍</button>
     </form>
 
     <div>
-        <a href="${pageContext.request.contextPath}/carrello.jsp">🛒 Carrello 
+        <!-- CORREZIONE: Puntiamo alla Servlet, non alla JSP -->
+        <a href="${pageContext.request.contextPath}/CarrelloServlet">🛒 Carrello 
             <span id="carrello-badge"><%= count > 0 ? count : "" %></span>
         </a>
         
@@ -47,7 +46,6 @@
 </nav>
 
 <div>
-    <div>
     <h2>Il nostro Catalogo</h2>
     <div class="product-list">
         <% 
@@ -55,17 +53,7 @@
             
             if (prodotti == null) { 
         %>
-                <!-- CASO A: La servlet non sta passando i dati alla JSP -->
-                <p class="error-message">
-                    Errore: La lista 'prodotti' è NULL. Assicurati di accedere al sito tramite l'indirizzo della Servlet (es. /home) e non aprendo direttamente il file JSP.
-                </p>
-        <% 
-            } else if (prodotti.isEmpty()) { 
-        %>
-                <!-- CASO B: La connessione funziona ma non ci sono dati nel Database -->
-                <p class="error-message">
-                    Nessun prodotto trovato. Controlla che la tabella 'prodotto' del tuo database contenga dei dati.
-                </p>
+                <p>Nessun prodotto disponibile al momento.</p>
         <% 
             } else {
                 for (Prodotto p : prodotti) {
@@ -76,7 +64,15 @@
                         <h5><%= p.getnome_prodotto() %></h5>
                         <p><%= p.getDescrizione() %></p>
                         <p>€ <%= String.format("%.2f", p.getPrezzo()) %></p>
-                        <button type="button" onclick="aggiungiAlCarrello('<%= p.getId_prodotto() %>')">Aggiungi</button>
+                        
+                        <!-- FORM PER AGGIUNGERE AL CARRELLO -->
+                        <form action="${pageContext.request.contextPath}/CarrelloServlet" method="POST">
+                            <input type="hidden" name="azione" value="add">
+                            <input type="hidden" name="id" value="<%= p.getId_prodotto() %>">
+                            <input type="hidden" name="nome" value="<%= p.getnome_prodotto() %>">
+                            <input type="hidden" name="prezzo" value="<%= p.getPrezzo() %>">
+                            <button type="submit">Aggiungi al Carrello</button>
+                        </form>
                     </div>
                 </div>
         <%      } 
@@ -84,26 +80,26 @@
         %>
     </div>
 </div>
-
 <script>
-function aggiungiAlCarrello(id) {
-    fetch('${pageContext.request.contextPath}/CarrelloServlet?idProdotto=' + id, {
-        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+function aggiungiAlCarrello(id, nome, prezzo) {
+    const formData = new URLSearchParams();
+    formData.append('azione', 'add');
+    formData.append('id', id);
+    formData.append('nome', nome);
+    formData.append('prezzo', prezzo);
+
+    fetch('${pageContext.request.contextPath}/CarrelloServlet', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData
     })
     .then(response => response.text())
-    .then(count => {
-        // 1. Aggiorna il numero del carrello
-        document.getElementById('carrello-badge').innerText = count;
-
-        // 2. DOM: Mostra il messaggio di conferma
-        const msg = document.getElementById('messaggio-conferma');
-        msg.style.display = 'block';
-
-        // 3. (Opzionale) Nascondi il messaggio automaticamente dopo 3 secondi
-        setTimeout(() => {
-            msg.style.display = 'none';
-        }, 3000);
-    });
+    .then(data => {
+        // Aggiorna il badge nella navbar
+        document.getElementById('carrello-badge').innerText = data;
+        alert("Prodotto aggiunto!");
+    })
+    .catch(error => console.error('Errore:', error));
 }
 </script>
 </body>
