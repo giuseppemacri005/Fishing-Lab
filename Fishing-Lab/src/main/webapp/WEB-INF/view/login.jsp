@@ -32,8 +32,9 @@
     <form action="${pageContext.request.contextPath}/LoginServlet" method="POST">
         
         <div class="form-group">
-            <label for="username">Nome utente o Email</label>
-            <input type="text" id="username" name="username" placeholder="Inserisci il tuo username" required autocomplete="username">
+            <label for="email">Nome utente o Email</label>
+      
+<input type="email" name="email" placeholder="Email" required>
         </div>
 
         <div class="form-group">

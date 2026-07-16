@@ -12,7 +12,7 @@ public class LoginServlet extends HttpServlet {
     private UtenteDAO dao = new UtenteDAO(); // Crea l'istanza del DAO
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,11 +26,11 @@ public class LoginServlet extends HttpServlet {
             // Login riuscito: creiamo la sessione
             HttpSession session = request.getSession();
             session.setAttribute("utente", u);
-            response.sendRedirect("home"); // Reindirizza alla Home
-        } else {
-            // Login fallito: torniamo al login con un errore
-            request.setAttribute("error", "Email o password errati");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            // Se è un utente normale, va alla home
+            response.sendRedirect(request.getContextPath() + "/home");
         }
-    }
-}
+     else {
+        // 6. Credenziali errate: torna al login con un messaggio
+        request.setAttribute("errore", "Email o Password errate!");
+        request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
+     }}}
