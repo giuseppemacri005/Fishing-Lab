@@ -4,25 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Fishing Lab - Registrati</title>
-    <!-- 
-       [CSS ESTERNO]: Collegamento al foglio di stile dedicato alla registrazione.
-       Il parametro ?v=... con il timestamp evita che il browser salvi il CSS in cache durante lo sviluppo.
-    -->
+    
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/Registrazione.css?v=<%= System.currentTimeMillis() %>">
 </head>
 <body>
 
-<!-- 
-   [.register-container]: Il box bianco centrale che racchiude tutto il modulo.
-   Nel CSS, questa classe imposta la larghezza, lo sfondo bianco e l'ombra sfumata.
--->
 <div class="register-container">
     
-    <!-- 
-       [.register-header]: Gestisce la spaziatura e l'allineamento dei testi in cima.
-    -->
+   
     <div class="register-header">
-        <!-- [.logo]: Colora il link di blu notte, lo ingrandisce e toglie la sottolineatura -->
+        
         <a href="${pageContext.request.contextPath}/home" class="logo">Fishing Lab 🎣</a>
         <h2>Crea il tuo account</h2>
         <p>Unisciti alla nostra community di pescatori!</p>

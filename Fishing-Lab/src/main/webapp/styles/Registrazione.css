@@ -1,0 +1,183 @@
+@charset "UTF-8";
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+
+body {
+    background-color: #e6f5f3; /* ---> Sfondo VERDE ACQUA (Identico alla Home e al Login) <--- */
+    color: #1e293b;            /* Colore dei testi principali (grigio scurissimo) */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 40px 20px;        /* Spazio extra sopra e sotto per quando la pagina scorre */
+}
+
+
+/* Collegato a: <div class="register-container"> */
+.register-container {
+    background-color: #ffffff; /* Sfondo bianco della scheda */
+    width: 100%;
+    max-width: 500px;          /* Un po' più largo del login (420px) per ospitare meglio i campi doppi */
+    margin: auto;              /* Centra la scheda orizzontalmente e verticalmente */
+    padding: 40px;
+    border-radius: 16px;       /* Angoli arrotondati moderni */
+    box-shadow: 0 10px 30px rgba(30, 61, 89, 0.08); /* Sfumatura d'ombra leggera */
+    border: 1px solid #e2e8f0;
+}
+
+
+/* Collegato a: <div class="register-header"> */
+.register-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Collegato a: <a class="logo"> (Scritta Fishing Lab) */
+.register-header .logo {
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: 850;
+    color: #1e3d59;            /* Blu Notte del brand */
+    text-decoration: none;     /* Rimuove la sottolineatura tipica dei link */
+    margin-bottom: 12px;
+    letter-spacing: -0.8px;
+}
+
+/* Collegato a: <h2>Crea il tuo account</h2> */
+.register-header h2 {
+    font-size: 1.4rem;
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+/* Collegato a: <p>Unisciti alla nostra community...</p> */
+.register-header p {
+    font-size: 0.9rem;
+    color: #64748b;            /* Grigio chiaro di supporto */
+}
+
+
+/* Collegato a: <div class="error-box"> */
+.error-box {
+    background-color: #fee2e2; /* Sfondo rosso chiaro */
+    color: #991b1b;            /* Testo rosso scuro */
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #fca5a5;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+/* Collegato a: <div class="form-row"> (Contenitore di Nome e Cognome affiancati) */
+.form-row {
+    display: flex;
+    gap: 16px;                 /* Crea lo spazio orizzontale tra Nome e Cognome */
+}
+
+/* Collegato a: <div class="form-group"> (I contenitori dei singoli input) */
+.form-group {
+    margin-bottom: 20px;
+    flex: 1;                   /* Fa sì che Nome e Cognome occupino lo stesso spazio nella riga */
+}
+
+/* Collegato a: <label> (Etichette dei campi di testo) */
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;            /* Grigio ardesia */
+    margin-bottom: 8px;
+}
+
+/* Collegato a tutti i tag <input> dentro .form-group */
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid #cbd5e1; /* Bordo grigio chiaro */
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: #1e293b;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s; /* Transizione fluida quando clicchi */
+}
+
+/* Si attiva quando l'utente seleziona/clicca dentro una casella di testo */
+.form-group input:focus {
+    border-color: #1e3d59;     /* Il bordo diventa Blu Notte */
+    box-shadow: 0 0 0 3px rgba(30, 61, 89, 0.15); /* Leggero bagliore intorno all'input */
+}
+
+
+/* Collegato a: <button class="btn-register"> */
+.btn-register {
+    width: 100%;
+    background-color: #1e3d59; /* Blu Notte del brand */
+    color: #ffffff;            /* Testo bianco */
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(30, 61, 89, 0.15);
+    transition: background-color 0.2s, transform 0.1s;
+    margin-top: 10px;
+}
+
+/* Cambia colore quando si passa sopra il mouse */
+.btn-register:hover {
+    background-color: #152c41; /* Blu ancora più scuro */
+}
+
+/* Effetto cliccato (si restringe leggermente) */
+.btn-register:active {
+    transform: scale(0.98);
+}
+
+
+/* Collegato a: <div class="register-footer"> */
+.register-footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+/* Collegato a: <a href="...">Accedi qui</a> */
+.register-footer a {
+    color: #1e3d59;            /* Link colorato in Blu Notte */
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Sottolinea il link quando ci passi sopra col mouse */
+.register-footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* Si attiva su schermi inferiori a 480px di larghezza */
+@media (max-width: 480px) {
+    body {
+        padding: 20px 10px;    /* Riduce lo spazio esterno */
+    }
+
+    .register-container {
+        padding: 30px 20px;    /* Riduce lo spazio interno del box */
+    }
+
+    /* Impila Nome e Cognome in verticale anziché in orizzontale */
+    .form-row {
+        flex-direction: column;
+        gap: 0;                /* Annulla il gap orizzontale */
+    }
+}
