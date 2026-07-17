@@ -10,10 +10,10 @@
 <body>
 
 <%
-   
+   //Restituisce la lista 
     List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
     double totale = 0.0;
-    
+    //Siccome è booleano controlliamo se il valore e true o false 
     boolean isLoggato = (session.getAttribute("utenteLoggato") != null);
 %>
 
@@ -71,14 +71,14 @@
             <div class="summary-actions">
                 <% if (isLoggato) { %>
                     
-                    <form action="${pageContext.request.contextPath}/ConfermaServlet" method="POST">
+                    <form action="${pageContext.request.contextPath}/CofermaServlet" method="POST">
                         <button type="submit" class="btn-checkout">Procedi all'ordine</button>
                     </form>
                 <% } else { %>
                     
                     <div class="cart-login-notice">
-                        
-                        <a href="${pageContext.request.contextPath}/LoginServlet" class="btn-checkout signup-redirect">
+                        <p class="Warning">⚠️ Devi effettuare l'accesso o registrarti per completare l'ordine.</p>
+                        <a href="${pageContext.request.contextPath}/LoginServlet" class="btn-checkout">
                             Accedi / Registrati
                         </a>
                     </div>

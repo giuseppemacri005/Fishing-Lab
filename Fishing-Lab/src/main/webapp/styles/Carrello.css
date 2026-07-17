@@ -1,268 +1,193 @@
-@charset "UTF-8";
-
-
-/* Si applica a tutti gli elementi della JSP per uniformare margini e font */
+/* Ripristino stili base e font */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Gestisce lo sfondo dell'intera pagina e centra il carrello */
 body {
-    background-color: #e6f5f3; /* Sfondo verde acqua */
-    color: #1e293b;            /* Testo principale scuro */
+    background-color: #f4f7f6;
+    color: #333;
     padding: 40px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
 }
 
-/* Collegato a: <div class="cart-container"> (Il box bianco centrale) */
+/* Contenitore Principale */
 .cart-container {
-    background-color: #ffffff; 
-    width: 100%;
-    max-width: 900px;          
-    padding: 40px;
-    border-radius: 16px;       
-    box-shadow: 0 10px 30px rgba(30, 61, 89, 0.08); 
-    border: 1px solid #e2e8f0;
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
 }
 
-/* Collegato a: <div class="cart-header"> (Contenitore del titolo in alto) */
+/* Intestazione del Carrello */
 .cart-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #e2e8f0;
+    border-bottom: 2px solid #eef2f3;
     padding-bottom: 20px;
     margin-bottom: 30px;
+    overflow: hidden; /* Contiene i float interni ed evita che la riga collassi */
 }
 
-/* Collegato a: <h2>Il tuo Carrello 🛒</h2> */
 .cart-header h2 {
-    font-size: 1.6rem;
-    color: #1e3d59;            /* Blu Notte */
-    font-weight: 800;
+    color: #1a365d; 
+    font-size: 24px;
+    float: left; /* Spinge il titolo tutto a sinistra */
 }
 
-/* Collegato a: <a class="btn-back">...</a> (Link per tornare allo shop) */
-.cart-header .btn-back {
-    color: #475569;
+.btn-back {
+    color: #2b6cb0;
     text-decoration: none;
-    font-size: 0.95rem;
     font-weight: 600;
-    transition: color 0.2s;
-}
+    float: right; /* Spinge il pulsante "Torna allo shop" tutto a destra */
+    margin-top: 6px; /* Lo allinea perfettamente al centro del titolo */
+}Suffix
 
-.cart-header .btn-back:hover {
-    color: #1e3d59;            
-}
-
-/* Collegato a: <div class="empty-cart"> (Mostrato solo se il carrello è vuoto) */
+/* Stato Carrello Vuoto */
 .empty-cart {
     text-align: center;
-    padding: 40px 0;
+    padding: 60px 20px;
 }
 
-.empty-cart p:first-of-type {
-    font-size: 1.2rem;
-    font-weight: 750;
-    color: #0f172a;
+.empty-cart p {
+    color: #718096;
+    font-size: 18px;
     margin-bottom: 10px;
 }
 
-.empty-cart p:last-of-type {
-    font-size: 0.95rem;
-    color: #64748b;
-    margin-bottom: 30px;
-}
-
-/* Collegato a: <a class="btn-shop-now">...</a> (Bottone per iniziare lo shopping) */
-.empty-cart .btn-shop-now {
-    display: inline-block;
-    background-color: #1e3d59;
-    color: #ffffff;
-    text-decoration: none;
+.btn-shop-now {
+    background-color: #3182ce;
+    color: white;
     padding: 12px 28px;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    transition: background-color 0.2s;
-}
-
-.empty-cart .btn-shop-now:hover {
-    background-color: #152c41;
-}
-
-/* Collegato a: <div class="cart-list"> (La lista che contiene i prodotti) */
-.cart-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-bottom: 30px;
-}
-
-/* Collegato a: <div class="cart-item"> (La singola riga del prodotto) */
-.cart-item {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #f1f5f9; 
-}
-
-/* Collegato a: <img class="item-img"> (Immagine del prodotto) */
-.cart-item .item-img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;         
     border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    /* Essendo un tag inline dentro un contenitore con text-align: center, si posiziona al centro da solo */
+}
+
+/* Lista degli elementi nel Carrello */
+.cart-list {
+    margin-bottom: 40px;
+}
+
+.cart-item {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 10px;
     border: 1px solid #e2e8f0;
+    margin-bottom: 20px; /* Crea lo spazio tra un prodotto e l'altro */
+    overflow: hidden; /* Contiene l'immagine, i dettagli e il prezzo che fluttuano */
 }
 
-/* Collegato a: <div class="item-details"> (Nome e descrizione prodotto) */
-.cart-item .item-details {
-    flex: 1;                   
+.item-img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    float: left; /* Si posiziona a sinistra */
+    margin-right: 20px;
 }
 
-.cart-item .item-details h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #0f172a;
-    margin-bottom: 4px;
+.item-details {
+    float: left; /* Si posiziona subito a destra dell'immagine */
+    width: 55%;
 }
 
-.cart-item .item-details p {
-    font-size: 0.85rem;
-    color: #64748b;            
+.item-details h3 {
+    color: #2d3748;
+    font-size: 18px;
+    margin-bottom: 6px;
 }
 
-/* Collegato a: <div class="item-price"> (Prezzo del singolo prodotto) */
-.cart-item .item-price {
-    font-size: 1.15rem;
-    font-weight: 750;
-    color: #1e3d59;            
-    min-width: 90px;
+.item-details p {
+    color: #718096;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.item-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1a365d;
+    float: left; /* Si posiziona a destra dei dettagli */
+    width: 15%;
+    margin-top: 35px;
     text-align: right;
 }
 
-/* Collegato a: <button class="btn-remove"> (Bottone elimina prodotto) */
-.cart-item .btn-remove {
-    background-color: transparent;
-    color: #ef4444;            
-    border: 1px solid #fecaca; 
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+/* Il form che avvolge il pulsante elimina */
+.cart-item form {
+    float: right; /* Spinge il pulsante elimina tutto a destra del carrello */
+    margin-top: 30px;
 }
 
-.cart-item .btn-remove:hover {
-    background-color: #fee2e2; 
-    border-color: #ef4444;     
-}
-
-/* Collegato a: <div class="cart-summary"> (Box grigio del totale a destra) */
-.cart-summary {
-    background-color: #f8fafc; 
-    border-radius: 12px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;     
-    gap: 20px;
-}
-
-/* Collegato a: <div class="summary-row"> (Contenitore del testo del totale) */
-.cart-summary .summary-row {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #475569;
-}
-
-/* Collegato a: <span class="total-amount"> (La cifra del prezzo totale) */
-.cart-summary .total-amount {
-    font-size: 1.6rem;
-    font-weight: 850;
-    color: #1e3d59;            
-}
-
-/* Collegato a: <button class="btn-checkout"> (Bottone procedi all'ordine) */
-.cart-summary .btn-checkout {
-    background-color: #1e3d59; 
-    color: #ffffff;
+/* Pulsante Elimina */
+.btn-remove {
+    background-color: #ef4444;
+    color: white;
     border: none;
-    padding: 14px 40px;
-    border-radius: 10px;
-    font-size: 1rem;
-    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 6px;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(30, 61, 89, 0.15);
-    transition: background-color 0.2s, transform 0.1s;
+    font-weight: 600;
 }
 
-.cart-summary .btn-checkout:hover {
-    background-color: #152c41;
+/* Riepilogo e Totali */
+.cart-summary {
+    border-top: 2px solid #eef2f3;
+    padding-top: 20px;
+    overflow: hidden; /* Contiene i blocchi del totale fluttuanti */
 }
 
-.cart-summary .btn-checkout:active {
-    transform: scale(0.98);
+.summary-row {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #4a5568;
+    float: right; /* Allinea la riga del prezzo a destra */
+    width: 100%;
+    text-align: right;
 }
 
-/* Gestione del layout sui tablet (Sotto i 768px di larghezza) */
-@media (max-width: 768px) {
-    body {
-        padding: 20px 10px;
-    }
+.total-amount {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2b6cb0;
+    margin-left: 10px;
+}
 
-    .cart-container {
-        padding: 24px 16px;
-    }
+.summary-actions {
+    float: right; /* Spinge l'intera area del pulsante finale a destra */
+    width: 350px;
+    clear: both; /* Si assicura di andare sotto la riga del subtotale */
+}
 
-    .cart-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-        position: relative;
-        padding-bottom: 25px;
-    }
+/* Pulsante di Checkout Standard e Accedi/Registrati */
+.btn-checkout {
+    float: right; /* Il float permette all'elemento di accettare la larghezza anche senza display block */
+    width: 100%;
+    background-color: #38a169; /* Verde */
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
 
-    .cart-item .item-img {
-        width: 100%;
-        height: 160px;          
-    }
+/* STILI PER IL BLOCCO AVVISO LOGIN */
+.cart-login-notice {
+    float: right;
+    width: 100%;
+}
 
-    .cart-item .item-price {
-        text-align: left;
-        font-size: 1.25rem;
-    }
-
-    .cart-item form {
-        width: 100%;
-    }
-
-    .cart-item .btn-remove {
-        width: 100%;
-        text-align: center;
-    }
-
-    .cart-summary {
-        align-items: stretch;   
-    }
-
-    .cart-summary .summary-row {
-        justify-content: space-between;
-    }
-
-    .cart-summary .btn-checkout {
-        width: 100%;            
-    }
+.Warning {
+    color: #e53e3e; /* Rosso */
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-align: right;
 }
