@@ -10,9 +10,11 @@
 <body>
 
 <%
-    // Recupera la lista dalla sessione
+   
     List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
     double totale = 0.0;
+    
+    boolean isLoggato = (session.getAttribute("utenteLoggato") != null);
 %>
 
 <div class="cart-container">
@@ -50,7 +52,7 @@
                         € <%= String.format("%.2f", p.getPrezzo()) %>
                     </div>
 
-                    <!-- FORM PER LA RIMOZIONE: Corretto per inviare i dati alla Servlet -->
+                    
                     <form action="${pageContext.request.contextPath}/CarrelloServlet" method="POST">
                         <input type="hidden" name="azione" value="remove">
                         <input type="hidden" name="id" value="<%= p.getId_prodotto() %>">
@@ -67,9 +69,20 @@
             </div>
             
             <div class="summary-actions">
-                <form action="${pageContext.request.contextPath}/CheckoutServlet" method="POST">
-                    <button type="submit" class="btn-checkout">Procedi all'ordine</button>
-                </form>
+                <% if (isLoggato) { %>
+                    
+                    <form action="${pageContext.request.contextPath}/CheckoutServlet" method="POST">
+                        <button type="submit" class="btn-checkout">Procedi all'ordine</button>
+                    </form>
+                <% } else { %>
+                    
+                    <div class="cart-login-notice">
+                        <p class="notice-text">⚠️ Devi effettuare l'accesso o registrarti per completare l'ordine.</p>
+                        <a href="${pageContext.request.contextPath}/login.jsp" class="btn-checkout signup-redirect">
+                            Accedi / Registrati
+                        </a>
+                    </div>
+                <% } %>
             </div>
         </div>
 
