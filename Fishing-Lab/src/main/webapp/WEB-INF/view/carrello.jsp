@@ -12,7 +12,7 @@
 <%
     List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
     double totale = 0.0;
-    boolean isLoggato = (session.getAttribute("utenteLoggato") != null);
+    boolean isLoggato = (session.getAttribute("utente") != null);
 %>
 
 <div class="cart-container">
@@ -53,6 +53,8 @@
                     <form action="${pageContext.request.contextPath}/CarrelloServlet" method="POST">
                         <input type="hidden" name="azione" value="remove">
                         <input type="hidden" name="id" value="<%= p.getId_prodotto() %>">
+                       
+
                         <button type="submit" class="btn-remove">Elimina</button>
                     </form>
                 </div>
@@ -67,7 +69,7 @@
 
             <div class="summary-actions">
                 <% if (isLoggato) { %>
-                    <form action="${pageContext.request.contextPath}/ConfermaServlet" method="POST">
+                    <form action="${pageContext.request.contextPath}/CheckoutServlet" method="POST">
                         <button type="submit" class="btn-checkout">Procedi all'Ordine ➔</button>
                     </form>
                 <% } else { %>

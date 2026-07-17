@@ -28,7 +28,7 @@ public class CercaServlet extends HttpServlet {
         request.setAttribute("prodotti", risultati);
 
      
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/home").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

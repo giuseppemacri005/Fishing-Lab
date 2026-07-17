@@ -37,6 +37,8 @@
                     <input type="hidden" name="id" value="<%= prodotto.getId_prodotto() %>">
                     <input type="hidden" name="nome" value="<%= prodotto.getnome_prodotto() %>">
                     <input type="hidden" name="prezzo" value="<%= prodotto.getPrezzo() %>">
+                    <input type="hidden" name="immagine" value="<%= prodotto.getImmagine() %>">
+    <input type="hidden" name="descrizione" value="<%= prodotto.getDescrizione() %>">
                     <button type="submit" id="btn-submit-cart" class="btn-add-cart">Aggiungi al Carrello 🛒</button>
                 </form>
                 <div id="cart-error-message" style="color: #e53e3e; margin-top: 10px; font-size: 14px;"></div>

@@ -43,6 +43,8 @@ public class CarrelloServlet extends HttpServlet {
             p.setId_prodotto(Integer.parseInt(request.getParameter("id")));
             p.setNome_prodotto(request.getParameter("nome"));
             p.setPrezzo(Double.parseDouble(request.getParameter("prezzo")));
+            p.setImmagine(request.getParameter("immagine"));
+            p.setDescrizione(request.getParameter("descrizione"));
             
             carrello.add(p);
         } 

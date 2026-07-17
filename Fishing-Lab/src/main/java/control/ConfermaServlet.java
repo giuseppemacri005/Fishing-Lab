@@ -50,7 +50,7 @@ public class ConfermaServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/conferma.jsp");
         } else {
            
-            response.sendRedirect(request.getContextPath() + "/carrello.jsp");
+            response.sendRedirect(request.getContextPath() + "/carrelloServlet");
         }
     }
 }
