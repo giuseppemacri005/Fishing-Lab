@@ -31,7 +31,7 @@
     </form>
 
     <div>
-        <!-- CORREZIONE: Puntiamo alla Servlet, non alla JSP -->
+        
         <a href="${pageContext.request.contextPath}/CarrelloServlet">🛒 Carrello 
             <span id="carrello-badge"><%= count > 0 ? count : "" %></span>
         </a>
