@@ -10,14 +10,11 @@
 <body>
 
 <%
-    
     Prodotto prodotto = (Prodotto) request.getAttribute("prodotto");
-    
     if (prodotto != null) {
 %>
 
 <div class="product-container">
-
 
     <div class="product-header">
         <h2><%= prodotto.getnome_prodotto() %></h2>
@@ -25,10 +22,8 @@
     </div>
 
     <div class="product-content">
-        <!-- Immagine del prodotto -->
         <img class="product-img" src="${pageContext.request.contextPath}/images/<%= prodotto.getImmagine() %>" alt="<%= prodotto.getnome_prodotto() %>">
         
-        <!-- Dettagli del prodotto (Descrizione e Prezzo) -->
         <div class="product-details">
             <p class="product-description"><%= prodotto.getDescrizione() %></p>
             
@@ -36,15 +31,15 @@
                 € <%= String.format("%.2f", prodotto.getPrezzo()) %>
             </div>
             
-            <!-- Aggiunta al carrello -->
             <div class="product-actions">
-            <form action="${pageContext.request.contextPath}/CarrelloServlet" method="POST">
-                            <input type="hidden" name="azione" value="add">
-                            <input type="hidden" name="id" value="<%= prodotto.getId_prodotto() %>">
-                            <input type="hidden" name="nome" value="<%= prodotto.getnome_prodotto() %>">
-                            <input type="hidden" name="prezzo" value="<%= prodotto.getPrezzo() %>">
-                            <button type="submit">Aggiungi al Carrello</button>
-                        </form>
+                <form id="add-to-cart-form" action="${pageContext.request.contextPath}/CarrelloServlet" method="POST">
+                    <input type="hidden" name="azione" value="add">
+                    <input type="hidden" name="id" value="<%= prodotto.getId_prodotto() %>">
+                    <input type="hidden" name="nome" value="<%= prodotto.getnome_prodotto() %>">
+                    <input type="hidden" name="prezzo" value="<%= prodotto.getPrezzo() %>">
+                    <button type="submit" id="btn-submit-cart" class="btn-add-cart">Aggiungi al Carrello 🛒</button>
+                </form>
+                <div id="cart-error-message" style="color: #e53e3e; margin-top: 10px; font-size: 14px;"></div>
             </div>
         </div>
     </div>
@@ -61,6 +56,37 @@
 <% 
     } 
 %>
+
+<script>
+document.getElementById('add-to-cart-form').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    let datiForm = new URLSearchParams(new FormData(this));
+    let errorBox = document.getElementById('cart-error-message');
+    
+    errorBox.innerText = "";
+
+    fetch(this.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: datiForm.toString()
+    })
+    .then(risposta => {
+        if (risposta.ok) {
+            document.getElementById('btn-submit-cart').innerText = "Aggiunto! ✓";
+            
+            setTimeout(function() {
+                document.getElementById('btn-submit-cart').innerText = "Aggiungi al Carrello 🛒";
+            }, 2000);
+        } else {
+            errorBox.innerText = "Errore durante l'aggiunta al carrello. Riprova.";
+        }
+    })
+    .catch(errore => {
+        errorBox.innerText = "Errore di connessione con il server.";
+    });
+});
+</script>
 
 </body>
 </html>

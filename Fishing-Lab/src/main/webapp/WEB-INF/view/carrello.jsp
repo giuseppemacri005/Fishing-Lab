@@ -10,10 +10,8 @@
 <body>
 
 <%
-   //Restituisce la lista 
     List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
     double totale = 0.0;
-    //Siccome è booleano controlliamo se il valore e true o false 
     boolean isLoggato = (session.getAttribute("utenteLoggato") != null);
 %>
 
@@ -52,7 +50,6 @@
                         € <%= String.format("%.2f", p.getPrezzo()) %>
                     </div>
 
-                    
                     <form action="${pageContext.request.contextPath}/CarrelloServlet" method="POST">
                         <input type="hidden" name="azione" value="remove">
                         <input type="hidden" name="id" value="<%= p.getId_prodotto() %>">
@@ -62,36 +59,25 @@
             <% } %>
         </div>
         
-        <<div class="cart-summary">
-    <div class="summary-row">
-        <span>Totale:</span>
-        <span class="total-amount">€ <%= String.format("%.2f", totale) %></span>
-    </div>
-
-    <div class="summary-actions">
-        <% 
-            
-            Object utente = session.getAttribute("utenteLoggato"); 
-            
-            if (utente != null) { 
-        %>
-          
-            <form action="${pageContext.request.contextPath}/ConfermaServlet" method="POST">
-                <button type="submit" class="btn-checkout">Procedi all'Ordine ➔</button>
-            </form>
-        <% 
-            } else { 
-        %>
-          
-            <div class="cart-login-notice">
-                <p class="Warning">Attenzione: devi accedere per completare l'ordine.</p>
-                <a href="${pageContext.request.contextPath}/login.jsp" class="btn-checkout">Accedi / Registrati</a>
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Totale:</span>
+                <span class="total-amount">€ <%= String.format("%.2f", totale) %></span>
             </div>
-        <% 
-            } 
-        %>
-    </div>
-</div>
+
+            <div class="summary-actions">
+                <% if (isLoggato) { %>
+                    <form action="${pageContext.request.contextPath}/ConfermaServlet" method="POST">
+                        <button type="submit" class="btn-checkout">Procedi all'Ordine ➔</button>
+                    </form>
+                <% } else { %>
+                    <div class="cart-login-notice">
+                        <p class="Warning">Attenzione: devi accedere per completare l'ordine.</p>
+                        <a href="${pageContext.request.contextPath}/login.jsp" class="btn-checkout">Accedi / Registrati</a>
+                    </div>
+                <% } %>
+            </div>
+        </div>
 
     <% } %>
 
