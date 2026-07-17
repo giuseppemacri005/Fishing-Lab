@@ -71,14 +71,14 @@
             <div class="summary-actions">
                 <% if (isLoggato) { %>
                     
-                    <form action="${pageContext.request.contextPath}/CheckoutServlet" method="POST">
+                    <form action="${pageContext.request.contextPath}/ConfermaServlet" method="POST">
                         <button type="submit" class="btn-checkout">Procedi all'ordine</button>
                     </form>
                 <% } else { %>
                     
                     <div class="cart-login-notice">
-                        <p class="notice-text">⚠️ Devi effettuare l'accesso o registrarti per completare l'ordine.</p>
-                        <a href="${pageContext.request.contextPath}/login.jsp" class="btn-checkout signup-redirect">
+                        
+                        <a href="${pageContext.request.contextPath}/LoginServlet" class="btn-checkout signup-redirect">
                             Accedi / Registrati
                         </a>
                     </div>
