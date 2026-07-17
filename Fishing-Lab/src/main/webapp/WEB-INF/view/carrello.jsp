@@ -62,29 +62,36 @@
             <% } %>
         </div>
         
-        <div class="cart-summary">
-            <div class="summary-row">
-                <span>Subtotale:</span>
-                <span class="total-amount">€ <%= String.format("%.2f", totale) %></span>
-            </div>
+        <<div class="cart-summary">
+    <div class="summary-row">
+        <span>Totale:</span>
+        <span class="total-amount">€ <%= String.format("%.2f", totale) %></span>
+    </div>
+
+    <div class="summary-actions">
+        <% 
             
-            <div class="summary-actions">
-                <% if (isLoggato) { %>
-                    
-                    <form action="${pageContext.request.contextPath}/CofermaServlet" method="POST">
-                        <button type="submit" class="btn-checkout">Procedi all'ordine</button>
-                    </form>
-                <% } else { %>
-                    
-                    <div class="cart-login-notice">
-                        <p class="Warning">⚠️ Devi effettuare l'accesso o registrarti per completare l'ordine.</p>
-                        <a href="${pageContext.request.contextPath}/LoginServlet" class="btn-checkout">
-                            Accedi / Registrati
-                        </a>
-                    </div>
-                <% } %>
+            Object utente = session.getAttribute("utenteLoggato"); 
+            
+            if (utente != null) { 
+        %>
+          
+            <form action="${pageContext.request.contextPath}/ConfermaServlet" method="POST">
+                <button type="submit" class="btn-checkout">Procedi all'Ordine ➔</button>
+            </form>
+        <% 
+            } else { 
+        %>
+          
+            <div class="cart-login-notice">
+                <p class="Warning">Attenzione: devi accedere per completare l'ordine.</p>
+                <a href="${pageContext.request.contextPath}/login.jsp" class="btn-checkout">Accedi / Registrati</a>
             </div>
-        </div>
+        <% 
+            } 
+        %>
+    </div>
+</div>
 
     <% } %>
 
