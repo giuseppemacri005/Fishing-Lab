@@ -38,11 +38,11 @@
             
             <!-- Aggiunta al carrello -->
             <div class="product-actions">
-                <form action="${pageContext.request.contextPath}/CarrelloServlet" method="POST">
+            <form action="${pageContext.request.contextPath}/CarrelloServlet" method="POST">
                             <input type="hidden" name="azione" value="add">
-                            <input type="hidden" name="id" value="<%= p.getId_prodotto() %>">
-                            <input type="hidden" name="nome" value="<%= p.getnome_prodotto() %>">
-                            <input type="hidden" name="prezzo" value="<%= p.getPrezzo() %>">
+                            <input type="hidden" name="id" value="<%= prodotto.getId_prodotto() %>">
+                            <input type="hidden" name="nome" value="<%= prodotto.getnome_prodotto() %>">
+                            <input type="hidden" name="prezzo" value="<%= prodotto.getPrezzo() %>">
                             <button type="submit">Aggiungi al Carrello</button>
                         </form>
             </div>

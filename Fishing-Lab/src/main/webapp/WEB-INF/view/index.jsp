@@ -31,7 +31,7 @@
     </form>
 
     <div>
-        <!-- CORREZIONE: Puntiamo alla Servlet, non alla JSP -->
+    
         <a href="${pageContext.request.contextPath}/CarrelloServlet">🛒 Carrello 
             <span id="carrello-badge"><%= count > 0 ? count : "" %></span>
         </a>
@@ -66,9 +66,12 @@
                         <p>€ <%= String.format("%.2f", p.getPrezzo()) %></p>
                         
                         <!-- FORM PER AGGIUNGERE AL CARRELLO -->
-                        <form action="${pageContext.request.contextPath}/PagProdotto.jsp" method="GET">
-                        <input type="hidden" name="id" value="<%= p.getId_prodotto() %>">
-                            <button type="submit">Vedi Prodotto</button>
+                       <form action="${pageContext.request.contextPath}/PagProdottoServlet" method="GET">
+
+    <input type="hidden" name="id" value="<%= p.getId_prodotto() %>">
+    
+    <button type="submit">Vedi Prodotto</button>
+</form>
                         </form>
                     </div>
                 </div>
@@ -101,3 +104,6 @@ function aggiungiAlCarrello(id, nome, prezzo) {
 </script>
 </body>
 </html>
+
+
+  
