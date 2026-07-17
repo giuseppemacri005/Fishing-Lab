@@ -1,1 +1,100 @@
 @charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #333;
+    padding: 40px 20px;
+}
+
+
+.product-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+
+.product-header {
+    border-bottom: 2px solid #eef2f3;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    overflow: hidden; 
+}
+
+.product-header h2 {
+    color: #1a365d; 
+    font-size: 26px;
+    float: left;
+}
+
+.btn-back {
+    color: #2b6cb0;
+    text-decoration: none;
+    font-weight: 600;
+    float: right;
+    margin-top: 8px;
+}
+
+
+.product-content {
+    overflow: hidden; 
+    width: 100%;
+}
+
+.product-img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    float: left;
+    margin-right: 40px;
+}
+
+.product-details {
+    float: left;
+    width: 50%; 
+}
+
+.product-description {
+    color: #4a5568;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.product-price {
+    font-size: 28px;
+    font-weight: bold;
+    color: #1a365d;
+    margin-bottom: 30px;
+}
+
+
+.product-actions {
+    width: 280px;
+}
+
+
+.btn-add-cart {
+    float: left; 
+    width: 100%;
+    background-color: #38a169; 
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}
