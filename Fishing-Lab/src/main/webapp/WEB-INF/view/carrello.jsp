@@ -72,8 +72,8 @@
                     </form>
                 <% } else { %>
                     <div class="cart-login-notice">
-                        <p class="Warning">Attenzione: devi accedere per completare l'ordine.</p>
-                        <a href="${pageContext.request.contextPath}/login.jsp" class="btn-checkout">Accedi / Registrati</a>
+                       
+                        <a href="${pageContext.request.contextPath}/LoginServlet" class="btn-checkout">Accedi / Registrati</a>
                     </div>
                 <% } %>
             </div>

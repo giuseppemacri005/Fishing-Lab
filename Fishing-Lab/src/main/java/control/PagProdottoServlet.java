@@ -1,41 +1,33 @@
 package control;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import model.Prodotto;
+import dao.ProdottoDAO; // Assumi di avere un DAO per i prodotti
 import java.io.IOException;
+import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
 
-/**
- * Servlet implementation class PagProdottoServlet
- */
-@WebServlet("/PagProdottoServlet")
+@WebServlet("/ProdottoServlet")
 public class PagProdottoServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PagProdottoServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String idParam = request.getParameter("id");
+
+        if (idParam != null) {
+        	// Nella tua ProdottoServlet
+        	int id = Integer.parseInt(request.getParameter("id"));
+
+        	ProdottoDAO pDao = new ProdottoDAO();
+        	Prodotto p = pDao.doRetrieveByKey(id); // Usa il nome corretto del metodo
+
+            if (p != null) {
+                request.setAttribute("prodotto", p);
+                request.getRequestDispatcher("/WEB-INF/view/PagProdotto.jsp").forward(request, response);
+            } else {
+                response.sendRedirect(request.getContextPath() + "/home");
+            }
+        } else {
+            response.sendRedirect(request.getContextPath() + "/home");
+        }
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }

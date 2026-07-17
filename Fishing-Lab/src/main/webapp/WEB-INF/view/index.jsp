@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.List, model.Prodotto, model.Utente" %>
+<%@ page import="java.util.List, model.Prodotto, model.Utente, dao.ProdottoDAO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,13 +10,22 @@
 <body>
 
 <%
+    
     List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
     int count = (carrello != null) ? carrello.size() : 0;
     Utente utente = (Utente) session.getAttribute("utente");
+
+    
+    List<Prodotto> prodotti = (List<Prodotto>) request.getAttribute("prodotti");
+    if (prodotti == null) {
+        ProdottoDAO pDao = new ProdottoDAO();
+        prodotti = pDao.doRetrieveAll(); // Assicurati che questo metodo esista nel DAO
+    }
 %>
 
 <nav>
     <a href="${pageContext.request.contextPath}/home">Fishing Lab 🎣</a>
+
 
     <form action="${pageContext.request.contextPath}/CercaServlet" method="GET">
         <select name="categoria">
@@ -31,7 +40,6 @@
     </form>
 
     <div>
-        
         <a href="${pageContext.request.contextPath}/CarrelloServlet">🛒 Carrello 
             <span id="carrello-badge"><%= count > 0 ? count : "" %></span>
         </a>
@@ -49,11 +57,9 @@
     <h2>Il nostro Catalogo</h2>
     <div class="product-list">
         <% 
-            List<Prodotto> prodotti = (List<Prodotto>) request.getAttribute("prodotti");
-            
-            if (prodotti == null) { 
+            if (prodotti == null || prodotti.isEmpty()) { 
         %>
-                <p>Nessun prodotto disponibile al momento.</p>
+                <p>Nessun prodotto trovato.</p>
         <% 
             } else {
                 for (Prodotto p : prodotti) {
@@ -65,9 +71,8 @@
                         <p><%= p.getDescrizione() %></p>
                         <p>€ <%= String.format("%.2f", p.getPrezzo()) %></p>
                         
-                        <!-- FORM PER AGGIUNGERE AL CARRELLO -->
-                        <form action="${pageContext.request.contextPath}/PagProdotto.jsp" method="GET">
-                        <input type="hidden" name="id" value="<%= p.getId_prodotto() %>">
+                        <form action="${pageContext.request.contextPath}/ProdottoServlet" method="GET">
+                            <input type="hidden" name="id" value="<%= p.getId_prodotto() %>">
                             <button type="submit">Vedi Prodotto</button>
                         </form>
                     </div>
@@ -77,27 +82,5 @@
         %>
     </div>
 </div>
-<script>
-function aggiungiAlCarrello(id, nome, prezzo) {
-    const formData = new URLSearchParams();
-    formData.append('azione', 'add');
-    formData.append('id', id);
-    formData.append('nome', nome);
-    formData.append('prezzo', prezzo);
-
-    fetch('${pageContext.request.contextPath}/CarrelloServlet', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-        // Aggiorna il badge nella navbar
-        document.getElementById('carrello-badge').innerText = data;
-        alert("Prodotto aggiunto!");
-    })
-    .catch(error => console.error('Errore:', error));
-}
-</script>
 </body>
 </html>
