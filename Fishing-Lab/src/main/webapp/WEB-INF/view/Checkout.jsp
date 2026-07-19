@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Fishing Lab - Checkout</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/Checkout.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/checkout.css">
 </head>
 <body>
 
