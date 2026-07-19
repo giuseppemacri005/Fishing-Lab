@@ -14,11 +14,11 @@ public class PagProdottoServlet extends HttpServlet {
         String idParam = request.getParameter("id");
 
         if (idParam != null) {
-        	// Nella tua ProdottoServlet
+        	
         	int id = Integer.parseInt(request.getParameter("id"));
 
         	ProdottoDAO pDao = new ProdottoDAO();
-        	Prodotto p = pDao.doRetrieveByKey(id); // Usa il nome corretto del metodo
+        	Prodotto p = pDao.doRetrieveByKey(id); 
 
             if (p != null) {
                 request.setAttribute("prodotto", p);

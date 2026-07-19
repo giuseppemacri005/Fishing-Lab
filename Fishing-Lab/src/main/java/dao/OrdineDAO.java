@@ -1,31 +1,48 @@
 package dao;
 
+import model.Ordine;
+import model.Prodotto;
 import java.sql.*;
 import util.DataSourceConnection; 
 
 public class OrdineDAO {
 
-    public int inserisciOrdine(int idUtente, double totale) {
-        int idGenerato = -1;
-        String sql = "INSERT INTO ordine (id_utente, data_ordine, totale) VALUES (?, NOW(), ?)";
+    // CORRETTO: il parametro deve essere di tipo model.Ordine
+    public int inserisciOrdine(Ordine o) throws SQLException {
+        String sql = "INSERT INTO ordine (id_utente, totale, indirizzo, data_ordine) VALUES (?, ?, ?, NOW())";
         
-        // Il try-with-resources apre e chiude la connessione automaticamente
-        try (Connection con =DataSourceConnection.getConnection(); 
+        try (Connection con = DataSourceConnection.getConnection();
              PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             
-            ps.setInt(1, idUtente);
-            ps.setDouble(2, totale);
+            // Assicurati che questi metodi (getIdUtente, getTotale, getIndirizzo) 
+            // esistano esattamente così nella tua classe model.Ordine
+            ps.setInt(1, o.getIdUtente());
+            ps.setDouble(2, o.getTotale());
+            ps.setString(3, o.getIndirizzo());
+            
             ps.executeUpdate();
             
-            // Recupera l'ID autoincrementale generato dal database
             try (ResultSet rs = ps.getGeneratedKeys()) {
                 if (rs.next()) {
-                    idGenerato = rs.getInt(1);
+                    return rs.getInt(1);
                 }
             }
-        } catch (SQLException e) {
-            e.printStackTrace(); // Utile per vedere errori in console
         }
-        return idGenerato;
+        return -1;
+    }
+
+    // Aggiungi questo metodo per salvare il dettaglio ordine
+    public void inserisciDettaglio(int idOrdine, Prodotto p) throws SQLException {
+        String sql = "INSERT INTO dettaglio_ordine (id_ordine, id_prodotto, prezzo) VALUES (?, ?, ?)";
+        
+        try (Connection con = DataSourceConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            
+            ps.setInt(1, idOrdine);
+            ps.setInt(2, p.getId_prodotto());
+            ps.setDouble(3, p.getPrezzo());
+            
+            ps.executeUpdate();
+        }
     }
 }
