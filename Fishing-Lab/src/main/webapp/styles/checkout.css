@@ -1,0 +1,150 @@
+@charset "UTF-8";
+body {
+    background-color: #f7fafc;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.checkout-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.checkout-main {
+    display: flex;
+    gap: 30px;
+}
+
+.checkout-section {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.dati-cliente {
+    flex: 2;
+}
+
+.order-summary {
+    flex: 1;
+    height: fit-content;
+}
+
+h2 {
+    font-size: 20px;
+    color: #2d3748;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #edf2f7;
+    padding-bottom: 10px;
+}
+
+h3 {
+    font-size: 16px;
+    color: #4a5568;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    color: #718096;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e0;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus {
+    border-color: #3182ce;
+    outline: none;
+}
+
+.checkout-divider {
+    border: 0;
+    height: 1px;
+    background: #edf2f7; 
+    margin: 25px 0;     
+}
+
+.btn-submit-order {
+    width: 100%;
+    background-color: #38a169;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.2s;
+}
+
+.btn-submit-order:hover {
+    background-color: #2f855a;
+}
+
+.checkout-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #4a5568;
+    padding: 10px 0;
+    border-bottom: 1px dashed #e2e8f0;
+}
+
+.checkout-total-row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 18px;
+    color: #2d3748;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px solid #edf2f7;
+}
+
+.checkout-total-amount {
+    color: #2b6cb0;
+}
+
+.btn-edit-cart {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #718096;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn-edit-cart:hover {
+    color: #4a5568;
+    text-decoration: underline;
+}
