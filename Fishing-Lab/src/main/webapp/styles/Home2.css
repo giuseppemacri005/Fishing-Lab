@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
-/* ==========================================
-   1. IMPOSTAZIONI BASE E RESET
-   ========================================== */
+
 /* Questo blocco resetta i margini e imposta il font su tutta la pagina JSP */
 * {
     box-sizing: border-box;
@@ -18,12 +16,8 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* ==========================================
-   2. ELEMENTI DI SUPPORTO (Banner & Feedback)
-   ========================================== */
 
-
-/* Collegato al messaggio di conferma generato dallo script JS alla fine della tua JSP */
+/* Collegato al messaggio di conferma generato dallo script JS alla fine della  JSP */
 #messaggio-conferma {
     display: none;
     position: fixed;
@@ -39,10 +33,7 @@ body {
     z-index: 1000;
 }
 
-/* ==========================================
-   3. BARRA DI NAVIGAZIONE
-   ========================================== */
-/* Collegato a: <nav> ... </nav> */
+
 nav {
     background-color:#488aee; 
     backdrop-filter: blur(8px);                 /* Effetto vetro sfocato sui browser moderni */
@@ -164,9 +155,7 @@ nav div span {
     font-weight: 500;
 }
 
-/* ==========================================
-   4. CATALOGO PRODOTTI
-   ========================================== */
+
 /* Collegato a: <div> contenitore principale che racchiude il titolo h2 e la lista */
 div:has(> h2) {
     max-width: 1240px;
@@ -304,9 +293,7 @@ h2::after {
 }
 
 
-/* ==========================================
-   5. MEDIA QUERIES (RESPONSIVE)
-   ========================================== */
+
 
 /* --- TABLET (Sotto i 900px) --- */
 @media (max-width: 900px) {

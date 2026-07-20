@@ -1,0 +1,147 @@
+@charset "UTF-8";
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+
+.admin-container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.admin-container h2 {
+    color: #1a365d;
+    margin-bottom: 20px;
+}
+
+.tab-menu {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.tab-btn[data-stato="inattivo"] {
+    background-color: #e2e8f0;
+    color: #4a5568;
+}
+
+.tab-btn[data-stato="inattivo"]:hover {
+    background-color: #cbd5e0;
+}
+
+.tab-btn[data-stato="attivo"] {
+    background-color: #2b6cb0;
+    color: #ffffff;
+}
+
+.tab-content[data-stato="nascosto"] {
+    display: none;
+}
+
+.tab-content[data-stato="visibile"] {
+    display: block;
+}
+
+.tab-content h3 {
+    color: #2d3748;
+    margin-bottom: 15px;
+}
+
+.empty-state {
+    background: #ffffff;
+    padding: 30px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    color: #4a5568;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.admin-table th, 
+.admin-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.admin-table th {
+    background-color: #2b6cb0;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.admin-table tr:hover {
+    background-color: #f7fafc;
+}
+
+.inline-form {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.inline-form input[type="number"] {
+    width: 80px;
+    padding: 6px;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+}
+
+.btn-update {
+    background-color: #319795;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-update:hover {
+    background-color: #2c7a7b;
+}
+
+.btn-delete {
+    background-color: #e53e3e;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-delete:hover {
+    background-color: #c53030;
+}
+
+@media screen and (max-width: 768px) {
+    .admin-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}

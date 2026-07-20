@@ -80,7 +80,7 @@
 
 <script>
 function aggiungiAlCarrello(id, nome, prezzo) {
-    // 1. Creazione dell'oggetto XMLHttpRequest (supporto cross-browser)
+    // 1. Creazione dell'oggetto XMLHttpRequest 
     var xhr;
     if (window.XMLHttpRequest) {
         xhr = new XMLHttpRequest();

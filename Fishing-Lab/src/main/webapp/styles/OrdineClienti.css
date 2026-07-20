@@ -1,40 +1,32 @@
 @charset "UTF-8";
 
-.user-orders-container {
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+
+.orders-container {
     max-width: 800px;
     margin: 40px auto;
     padding: 0 20px;
     box-sizing: border-box;
 }
 
-.user-orders-container h2 {
+.orders-container h2 {
     color: #1a365d;
     margin-bottom: 20px;
     font-size: 1.8rem;
 }
 
-.no-orders-box {
+.no-orders {
     background: #ffffff;
-    padding: 40px;
+    padding: 30px;
     text-align: center;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-.no-orders-box p {
     color: #4a5568;
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-}
-
-.btn-shop {
-    display: inline-block;
-    background-color: #2b6cb0;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
 }
 
 .orders-list {
@@ -48,6 +40,7 @@
     border-radius: 8px;
     border: 1px solid #e2e8f0;
     box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    overflow: hidden;
 }
 
 .order-header {
@@ -75,48 +68,19 @@
 }
 
 .order-details p {
-    margin: 5px 0;
+    margin: 6px 0;
 }
 
-/* --- MEDIA QUERIES --- */
-
-/* Tablet (max-width: 768px) */
-@media screen and (max-width: 768px) {
-    .user-orders-container {
-        margin: 25px auto;
-        padding: 0 15px;
-    }
-
-    .user-orders-container h2 {
-        font-size: 1.5rem;
-    }
-}
-
-/* Smartphone (max-width: 480px) */
-@media screen and (max-width: 480px) {
-    .user-orders-container {
-        margin: 15px auto;
-        padding: 0 10px;
-    }
-
-    .user-orders-container h2 {
-        font-size: 1.3rem;
-        text-align: center;
+/* Responsiveness */
+@media screen and (max-width: 600px) {
+    .orders-container {
+        margin: 20px auto;
+        padding: 0 12px;
     }
 
     .order-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 4px;
-        padding: 10px 12px;
-    }
-
-    .order-details {
-        padding: 12px;
-        font-size: 0.9rem;
-    }
-
-    .no-orders-box {
-        padding: 25px 15px;
     }
 }

@@ -145,9 +145,7 @@ input[type="tel"] {
     text-decoration: underline;
 }
 
-/* ==========================================
-   MEDIA QUERIES (Responsive)
-   ========================================== */
+
 
 /* Per schermi fino a 768px (Tablet in verticale e Smartphone) */
 @media (max-width: 768px) {
