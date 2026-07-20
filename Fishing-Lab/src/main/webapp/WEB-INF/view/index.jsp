@@ -31,8 +31,7 @@
         </a>
         
         <% if (utente != null) { 
-            // Controllo del ruolo tollerante a maiuscole/minuscole e spazi
-            boolean isAdmin = utente.getRuolo() != null && "admin".equalsIgnoreCase(utente.getRuolo().trim());
+            boolean isAdmin = "admin".equals(utente.getRuolo());
             if (isAdmin) { 
         %>
                 <a href="${pageContext.request.contextPath}/OrdiniServlet">📦 Tutti gli Ordini</a>
@@ -80,97 +79,52 @@
 </div>
 
 <script>
-// 1. Funzione per creare XMLHttpRequest (dalle dispense del Prof.)
-function createXMLHttpRequest() {
-    var request;
-    try {
-        request = new XMLHttpRequest();
-    } catch (e) {
-        try {
-            request = new ActiveXObject("Msxml2.XMLHTTP");
-        } catch (e) {
-            try {
-                request = new ActiveXObject("Microsoft.XMLHTTP");
-            } catch (e) {
-                alert("Il browser non supporta AJAX");
-                return null;
-            }
-        }
-    }
-    return request;
-}
-
-// 2. Funzione generica per la chiamata AJAX (dalle dispense del Prof.)
-function loadAjaxDoc(url, method, params, cFunction) {
-    var request = createXMLHttpRequest();
-    if (request) {
-        request.onreadystatechange = function() {
-            if (this.readyState == 4) {
-                if (this.status == 200) {
-                    cFunction(this);
-                } else {
-                    if (this.status == 0) {
-                        alert("Problemi nell'esecuzione della richiesta: nessuna risposta ricevuta nel tempo limite");
-                    } else {
-                        alert("Problemi nell'esecuzione della richiesta:\n" + this.statusText);
-                    }
-                    return null;
-                }
-            }
-        };
-
-        // Timeout a 15 secondi con abort()
-        setTimeout(function () {
-            if (request.readyState < 4) {
-                request.abort();
-            }
-        }, 15000);
-
-        if (method.toLowerCase() == "get") {
-            if (params) {
-                request.open("GET", url + "?" + params, true);
-            } else {
-                request.open("GET", url, true);
-            }
-            request.setRequestHeader("Connection", "close");
-            request.send(null);
-        } else {
-            if (params) {
-                request.open("POST", url, true);
-                request.setRequestHeader("Connection", "close");
-                request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                request.send(params);
-            } else {
-                console.log("Usa GET se non ci sono parametri!");
-                return null;
-            }
-        }
-    }
-}
-
-// 3. Callback che gestisce l'aggiornamento della pagina alla risposta
-function handleCarrello(request) {
-    var count = request.responseText;
-
-    document.getElementById('carrello-badge').textContent = count;
-
-    var toast = document.getElementById('messaggio-conferma');
-    toast.textContent = "Prodotto aggiunto al carrello!";
-    toast.style.display = 'block';
-
-    setTimeout(function() {
-        toast.style.display = 'none';
-    }, 3000);
-}
-
-// 4. Funzione richiamata al click sul pulsante "Aggiungi al Carrello"
 function aggiungiAlCarrello(id, nome, prezzo) {
+    // 1. Creazione dell'oggetto XMLHttpRequest (supporto cross-browser)
+    var xhr;
+    if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+    } else {
+        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    // 2. Definizione della callback al cambio di stato
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                // Aggiorna il numero di articoli nel badge del carrello
+                document.getElementById('carrello-badge').textContent = xhr.responseText;
+
+                // Mostra il messaggio toast di conferma
+                var toast = document.getElementById('messaggio-conferma');
+                toast.textContent = "Prodotto \"" + nome + "\" aggiunto al carrello!";
+                toast.style.display = 'block';
+
+                setTimeout(function() {
+                    toast.style.display = 'none';
+                }, 3000);
+            } else {
+                alert("Errore durante l'aggiunta al carrello (" + xhr.status + ")");
+            }
+        }
+    };
+
+    // 3. Gestione Timeout (15 secondi)
+    setTimeout(function() {
+        if (xhr.readyState < 4) {
+            xhr.abort();
+        }
+    }, 15000);
+
+    // 4. Preparazione e invio della richiesta POST
     var url = "${pageContext.request.contextPath}/CarrelloServlet";
-    var params = "azione=add&id=" + id + "&nome=" + encodeURIComponent(nome) + "&prezzo=" + prezzo;
-    
-    loadAjaxDoc(url, "POST", params, handleCarrello);
+    var params = "azione=add&id=" + encodeURIComponent(id) + 
+                 "&nome=" + encodeURIComponent(nome) + 
+                 "&prezzo=" + encodeURIComponent(prezzo);
+
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.setRequestHeader("Connection", "close");
+    xhr.send(params);
 }
 </script>
-
-</body>
-</html>

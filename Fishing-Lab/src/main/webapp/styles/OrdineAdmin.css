@@ -1,0 +1,131 @@
+/* --- STILI BASE (Desktop / Schermi Grandi) --- */
+.admin-orders-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    box-sizing: border-box;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 15px;
+}
+
+.admin-header h2 {
+    color: #1a365d;
+    margin: 0;
+    font-size: 1.6rem;
+}
+
+.badge-total {
+    background: #2b6cb0;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.table-responsive {
+    width: 100%;
+}
+
+.admin-orders-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-orders-table th, 
+.admin-orders-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.admin-orders-table th {
+    background-color: #2d3748;
+    color: #ffffff;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.admin-orders-table tr:hover {
+    background-color: #f7fafc;
+}
+
+.user-tag {
+    background: #e2e8f0;
+    color: #4a5568;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.no-data {
+    text-align: center;
+    padding: 30px;
+    color: #718096;
+}
+
+/* --- MEDIA QUERIES --- */
+
+/* Tablet (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    .admin-orders-container {
+        margin: 20px 15px;
+        padding: 15px;
+    }
+
+    .admin-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .admin-orders-table th, 
+    .admin-orders-table td {
+        padding: 10px 10px;
+        font-size: 0.85rem;
+    }
+
+    .table-responsive {
+        overflow-x: auto; /* Permette lo scroll orizzontale se necessario */
+    }
+}
+
+/* Smartphone (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    .admin-orders-container {
+        margin: 10px 5px;
+        padding: 10px;
+        border-radius: 4px;
+    }
+
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .badge-total {
+        font-size: 0.8rem;
+        padding: 4px 10px;
+    }
+
+    .admin-orders-table th, 
+    .admin-orders-table td {
+        padding: 8px 6px;
+        font-size: 0.75rem;
+    }
+
+    .user-tag {
+        font-size: 0.75rem;
+        padding: 2px 4px;
+    }
+}
