@@ -10,7 +10,7 @@
 
 <div class="success-container">
     <div class="success-card">
-        <!-- Icona di successo (un segno di spunta visivo) -->
+        
         <div class="success-icon">✓</div>
         
         <h1>Grazie per il tuo acquisto!</h1>

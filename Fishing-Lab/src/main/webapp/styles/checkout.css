@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 body {
     background-color: #f7fafc;
     font-family: Arial, sans-serif;
@@ -74,15 +75,10 @@ input[type="text"],
 input[type="tel"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #cbd5e0;
+    border: 1px solid #3182ce;
     border-radius: 5px;
     font-size: 14px;
     box-sizing: border-box;
-}
-
-input[type="text"]:focus,
-input[type="tel"]:focus {
-    border-color: #3182ce;
     outline: none;
 }
 
@@ -147,4 +143,44 @@ input[type="tel"]:focus {
 .btn-edit-cart:hover {
     color: #4a5568;
     text-decoration: underline;
+}
+
+/* ==========================================
+   MEDIA QUERIES (Responsive)
+   ========================================== */
+
+/* Per schermi fino a 768px (Tablet in verticale e Smartphone) */
+@media (max-width: 768px) {
+    .checkout-container {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    /* Mette i dati cliente e il riepilogo uno sotto l'altro */
+    .checkout-main {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Mette i campi affiancati (es. Nome e Cognome) uno sotto l'altro */
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .checkout-section {
+        padding: 20px;
+    }
+}
+
+/* Per schermi molto piccoli (Smartphone sotto i 480px) */
+@media (max-width: 480px) {
+    h2 {
+        font-size: 18px;
+    }
+
+    .btn-submit-order {
+        padding: 12px;
+        font-size: 15px;
+    }
 }

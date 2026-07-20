@@ -98,3 +98,69 @@ body {
     cursor: pointer;
     text-align: center;
 }
+
+/* Media query per tablet e dispositivi mobili */
+@media (max-width: 768px) {
+    /* Riduce il padding del corpo pagina per schermi più stretti */
+    body {
+        padding: 20px 10px;
+    }
+
+    /* Riduce il padding del contenitore principale */
+    .product-container {
+        padding: 20px;
+    }
+
+    /* Rimuove i float dell'intestazione per evitare sovrapposizioni su schermi piccoli */
+    .product-header h2,
+    .btn-back {
+        float: none;
+        display: block;
+    }
+
+    .btn-back {
+        margin-top: 10px;
+    }
+
+    /* Annulla i float dell'immagine e dei dettagli facendoli andare uno sotto l'altro */
+    .product-img {
+        float: none;
+        width: 100%;
+        height: auto;
+        max-height: 350px;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .product-details {
+        float: none;
+        width: 100%;
+    }
+
+    /* Permette al blocco azioni e al pulsante di occupare l'intera larghezza disponibile */
+    .product-actions {
+        width: 100%;
+    }
+
+    .btn-add-cart {
+        float: none;
+    }
+}
+
+/* Media query per smartphone piccoli */
+@media (max-width: 480px) {
+    /* Adatta le dimensioni dei testi per i display più stretti */
+    .product-header h2 {
+        font-size: 22px;
+    }
+
+    .product-price {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .product-description {
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+}
