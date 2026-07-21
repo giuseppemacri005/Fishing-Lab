@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/* Reset di base */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,26 +9,25 @@
 }
 
 body {
-    background-color: #e6f5f3; /* Sfondo verde acqua della Home */
+    background-color: #e6f5f3; 
     color: #1e293b;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Centra la scheda di login verticalmente e orizzontalmente */
+
 .login-container {
     background-color: #ffffff;
     width: 100%;
     max-width: 420px;
-    margin: auto; /* Centra la scheda nella pagina */
+    margin: auto; 
     padding: 40px;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(30, 61, 89, 0.08);
     border: 1px solid #e2e8f0;
 }
 
-/* Header della scheda */
 .login-header {
     text-align: center;
     margin-bottom: 30px;
@@ -55,7 +54,7 @@ body {
     color: #64748b;
 }
 
-/* Box di errore rosso */
+
 .error-box {
     background-color: #fee2e2;
     color: #991b1b;
@@ -68,7 +67,7 @@ body {
     text-align: center;
 }
 
-/* Gruppi dei campi di input */
+
 .form-group {
     margin-bottom: 20px;
 }
@@ -97,7 +96,7 @@ body {
     box-shadow: 0 0 0 3px rgba(30, 61, 89, 0.15);
 }
 
-/* Bottone di Login */
+
 .btn-login {
     width: 100%;
     background-color: #1e3d59;
@@ -121,7 +120,7 @@ body {
     transform: scale(0.98);
 }
 
-/* Footer per la registrazione */
+
 .login-footer {
     text-align: center;
     margin-top: 25px;
@@ -139,7 +138,7 @@ body {
     text-decoration: underline;
 }
 
-/* Responsive */
+
 @media (max-width: 480px) {
     .login-container {
         padding: 30px 20px;

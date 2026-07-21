@@ -29,7 +29,7 @@
         </div>
     <% } %>
 
-    <!-- Form di Registrazione che punta alla tua Servlet di registrazione -->
+  
     <form action="${pageContext.request.contextPath}/RegisterServlet" method="POST">
         
        

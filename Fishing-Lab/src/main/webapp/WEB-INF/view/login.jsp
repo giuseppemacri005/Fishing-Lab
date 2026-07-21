@@ -9,7 +9,6 @@
 </head>
 <body>
 
-<!-- Contenitore principale della scheda di login -->
 <div class="login-container">
     
     <div class="login-header">
@@ -18,7 +17,6 @@
         <p>Inserisci le tue credenziali per accedere al tuo account</p>
     </div>
 
-    <!-- Gestione dell'eventuale messaggio di errore della servlet -->
     <% 
         String errore = (String) request.getAttribute("errore");
         if (errore != null) { 
@@ -28,13 +26,11 @@
         </div>
     <% } %>
 
-    <!-- Form di Login -->
     <form action="${pageContext.request.contextPath}/LoginServlet" method="POST">
         
         <div class="form-group">
             <label for="email">Nome utente o Email</label>
-      
-<input type="email" name="email" placeholder="Email" required>
+            <input type="email" name="email" placeholder="Email" required>
         </div>
 
         <div class="form-group">

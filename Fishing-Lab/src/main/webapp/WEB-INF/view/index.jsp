@@ -35,7 +35,7 @@
     
     if (isAdmin) { 
 %>
-        <a href="${pageContext.request.contextPath}/OrdiniServlet">📦 Tutti gli Ordini</a>
+        <a href="${pageContext.request.contextPath}/OrdiniServlet"> Zona Admin </a>
 <%  } else { %>
         <a href="${pageContext.request.contextPath}/OrdiniServlet">📦 I miei Ordini</a>
 <%  } 
@@ -70,7 +70,7 @@
                         <p><%= p.getDescrizione() %></p>
                         <p>€ <%= String.format("%.2f", p.getPrezzo()) %></p>
                         
-                        <!-- Bottone per visualizzare il dettaglio del singolo prodotto -->
+                       
                         <a href="${pageContext.request.contextPath}/ProdottoServlet?id=<%= p.getId_prodotto() %>" class="btn-vedi-prodotto">Vedi Prodotto</a>
                     </div>
                 </div>

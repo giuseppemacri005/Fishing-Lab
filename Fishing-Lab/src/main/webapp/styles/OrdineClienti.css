@@ -71,7 +71,7 @@ body {
     margin: 6px 0;
 }
 
-/* Responsiveness */
+
 @media screen and (max-width: 600px) {
     .orders-container {
         margin: 20px auto;

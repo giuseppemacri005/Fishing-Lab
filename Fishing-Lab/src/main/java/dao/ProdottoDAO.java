@@ -7,7 +7,7 @@ import util.DataSourceConnection; // Importa la tua classe di utilità
 
 public class ProdottoDAO {
 
-    // Recupera la connessione tramite la tua classe util
+   
     private Connection getConnection() throws SQLException {
         return DataSourceConnection.getConnection();
     }
@@ -22,7 +22,7 @@ public class ProdottoDAO {
     }
     public List<Prodotto> doSearch(String nome) {
         List<Prodotto> lista = new ArrayList<>();
-        String sql = "SELECT * FROM prodotto WHERE 1=1"; // 1=1 facilita l'aggiunta di clausole
+        String sql = "SELECT * FROM prodotto WHERE 1=1";
         
         if (nome != null && !nome.isEmpty()) sql += " AND nome_prodotto LIKE ?";
        
@@ -50,7 +50,7 @@ public class ProdottoDAO {
 
     private List<Prodotto> eseguiQuery(String sql, String param) {
         List<Prodotto> lista = new ArrayList<>();
-        // Il try-with-resources chiude automaticamente la connessione restituita dal DataSource
+        
         try (Connection con = getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
             if (param != null) ps.setString(1, param);
             

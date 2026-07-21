@@ -99,19 +99,19 @@ body {
     text-align: center;
 }
 
-/* Media query per tablet e dispositivi mobili */
+
 @media (max-width: 768px) {
-    /* Riduce il padding del corpo pagina per schermi più stretti */
+    
     body {
         padding: 20px 10px;
     }
 
-    /* Riduce il padding del contenitore principale */
+    
     .product-container {
         padding: 20px;
     }
 
-    /* Rimuove i float dell'intestazione per evitare sovrapposizioni su schermi piccoli */
+    
     .product-header h2,
     .btn-back {
         float: none;
@@ -122,7 +122,7 @@ body {
         margin-top: 10px;
     }
 
-    /* Annulla i float dell'immagine e dei dettagli facendoli andare uno sotto l'altro */
+    
     .product-img {
         float: none;
         width: 100%;
@@ -137,7 +137,7 @@ body {
         width: 100%;
     }
 
-    /* Permette al blocco azioni e al pulsante di occupare l'intera larghezza disponibile */
+    
     .product-actions {
         width: 100%;
     }
@@ -147,9 +147,9 @@ body {
     }
 }
 
-/* Media query per smartphone piccoli */
+
 @media (max-width: 480px) {
-    /* Adatta le dimensioni dei testi per i display più stretti */
+   
     .product-header h2 {
         font-size: 22px;
     }

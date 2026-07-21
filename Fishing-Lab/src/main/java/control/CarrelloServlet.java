@@ -12,17 +12,17 @@ import jakarta.servlet.http.*;
 public class CarrelloServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Recupera la sessione
+        
         HttpSession session = request.getSession();
         List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
         
-        // Se non esiste, crea un carrello nuovo
+        
         if (carrello == null) {
             carrello = new ArrayList<>();
             session.setAttribute("carrello", carrello);
         }
         
-        // Invia alla pagina JSP che visualizzerà la lista
+        
         request.getRequestDispatcher("/WEB-INF/view/carrello.jsp").forward(request, response);
     }
 
@@ -38,7 +38,7 @@ public class CarrelloServlet extends HttpServlet {
         String azione = request.getParameter("azione");
 
         if ("add".equals(azione)) {
-            // Crea un prodotto con i dati dal form
+            
             Prodotto p = new Prodotto();
             p.setId_prodotto(Integer.parseInt(request.getParameter("id")));
             p.setNome_prodotto(request.getParameter("nome"));
@@ -50,7 +50,7 @@ public class CarrelloServlet extends HttpServlet {
         } 
         else if ("remove".equals(azione)) {
             int id = Integer.parseInt(request.getParameter("id"));
-            // Rimuove il prodotto con quell'ID
+            
             carrello.removeIf(p -> p.getId_prodotto() == id);
         }
 

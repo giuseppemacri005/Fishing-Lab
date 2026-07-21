@@ -1,4 +1,5 @@
-/* Ripristino stili base e font */
+@charset "UTF-8";
+
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +13,7 @@ body {
     padding: 40px 20px;
 }
 
-/* Contenitore Principale */
+
 .cart-container {
     max-width: 1000px;
     margin: 0 auto;
@@ -21,29 +22,29 @@ body {
     border-radius: 12px;
 }
 
-/* Intestazione del Carrello */
+
 .cart-header {
     border-bottom: 2px solid #eef2f3;
     padding-bottom: 20px;
     margin-bottom: 30px;
-    overflow: hidden; /* Contiene i float interni ed evita che la riga collassi */
+    overflow: hidden; 
 }
 
 .cart-header h2 {
     color: #1a365d; 
     font-size: 24px;
-    float: left; /* Spinge il titolo tutto a sinistra */
+    float: left; 
 }
 
 .btn-back {
     color: #2b6cb0;
     text-decoration: none;
     font-weight: 600;
-    float: right; /* Spinge il pulsante "Torna allo shop" tutto a destra */
-    margin-top: 6px; /* Lo allinea perfettamente al centro del titolo */
+    float: right; 
+    margin-top: 6px; 
 }Suffix
 
-/* Stato Carrello Vuoto */
+
 .empty-cart {
     text-align: center;
     padding: 60px 20px;
@@ -62,10 +63,10 @@ body {
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
-    /* Essendo un tag inline dentro un contenitore con text-align: center, si posiziona al centro da solo */
+    
 }
 
-/* Lista degli elementi nel Carrello */
+
 .cart-list {
     margin-bottom: 40px;
 }
@@ -75,8 +76,8 @@ body {
     padding: 20px;
     border-radius: 10px;
     border: 1px solid #e2e8f0;
-    margin-bottom: 20px; /* Crea lo spazio tra un prodotto e l'altro */
-    overflow: hidden; /* Contiene l'immagine, i dettagli e il prezzo che fluttuano */
+    margin-bottom: 20px; 
+    overflow: hidden; 
 }
 
 .item-img {
@@ -85,12 +86,12 @@ body {
     object-fit: cover;
     border-radius: 8px;
     border: 1px solid #cbd5e1;
-    float: left; /* Si posiziona a sinistra */
+    float: left; 
     margin-right: 20px;
 }
 
 .item-details {
-    float: left; /* Si posiziona subito a destra dell'immagine */
+    float: left; 
     width: 55%;
 }
 
@@ -110,19 +111,19 @@ body {
     font-size: 18px;
     font-weight: bold;
     color: #1a365d;
-    float: left; /* Si posiziona a destra dei dettagli */
+    float: left; 
     width: 15%;
     margin-top: 35px;
     text-align: right;
 }
 
-/* Il form che avvolge il pulsante elimina */
+
 .cart-item form {
-    float: right; /* Spinge il pulsante elimina tutto a destra del carrello */
+    float: right; 
     margin-top: 30px;
 }
 
-/* Pulsante Elimina */
+
 .btn-remove {
     background-color: #ef4444;
     color: white;
@@ -133,11 +134,11 @@ body {
     font-weight: 600;
 }
 
-/* Riepilogo e Totali */
+
 .cart-summary {
     border-top: 2px solid #eef2f3;
     padding-top: 20px;
-    overflow: hidden; /* Contiene i blocchi del totale fluttuanti */
+    overflow: hidden; 
 }
 
 .summary-row {

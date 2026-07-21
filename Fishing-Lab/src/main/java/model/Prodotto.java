@@ -12,10 +12,10 @@ public class Prodotto implements Serializable {
     private String immagine;
     private String categoria;
 
-    // Costruttore vuoto obbligatorio per lo standard JavaBean
+    
     public Prodotto() {}
 
-    // Metodi Getter e Setter
+    
     public int getId_prodotto() { return id_prodotto; }
     public void setId_prodotto(int id_prodotto) { this.id_prodotto = id_prodotto; }
 

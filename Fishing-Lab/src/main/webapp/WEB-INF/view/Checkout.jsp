@@ -27,7 +27,7 @@
         <div class="checkout-section dati-cliente">
             <h2>Dati di Spedizione e Pagamento</h2>
             
-            <!-- CORREZIONE QUI: puntiamo a /CheckoutServlet -->
+            
             <form action="${pageContext.request.contextPath}/CheckoutServlet" method="POST">
                 
                 <h3>Indirizzo di Spedizione</h3>

@@ -12,10 +12,9 @@ public class Utente  implements Serializable {
     private String password;
     private String ruolo;
 
- // Costruttore vuoto obbligatorio per lo standard JavaBean
+
     public Utente() {}
 
-    // Metodi Getter e Setter per Utente
     public int getId_utente() { return id_utente; }
     public void setId_utente(int id_utente) { this.id_utente = id_utente; }
 
