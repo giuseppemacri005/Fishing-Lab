@@ -15,8 +15,6 @@
     Utente utente = (Utente) session.getAttribute("utente");
 %>
 
-<div id="messaggio-conferma"></div>
-
 <nav>
     <a href="${pageContext.request.contextPath}/home">Fishing Lab 🎣</a>
 
@@ -67,9 +65,8 @@
                         <p><%= p.getDescrizione() %></p>
                         <p>€ <%= String.format("%.2f", p.getPrezzo()) %></p>
                         
-                        <button type="button" onclick="aggiungiAlCarrello('<%= p.getId_prodotto() %>', '<%= p.getnome_prodotto() %>', <%= p.getPrezzo() %>)">
-                            Aggiungi al Carrello
-                        </button>
+                        <!-- Bottone per visualizzare il dettaglio del singolo prodotto -->
+                        <a href="${pageContext.request.contextPath}/ProdottoServlet?id=<%= p.getId_prodotto() %>" class="btn-vedi-prodotto">Vedi Prodotto</a>
                     </div>
                 </div>
         <%      } 
@@ -78,53 +75,5 @@
     </div>
 </div>
 
-<script>
-function aggiungiAlCarrello(id, nome, prezzo) {
-    // 1. Creazione dell'oggetto XMLHttpRequest 
-    var xhr;
-    if (window.XMLHttpRequest) {
-        xhr = new XMLHttpRequest();
-    } else {
-        xhr = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-
-    // 2. Definizione della callback al cambio di stato
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                // Aggiorna il numero di articoli nel badge del carrello
-                document.getElementById('carrello-badge').textContent = xhr.responseText;
-
-                // Mostra il messaggio toast di conferma
-                var toast = document.getElementById('messaggio-conferma');
-                toast.textContent = "Prodotto \"" + nome + "\" aggiunto al carrello!";
-                toast.style.display = 'block';
-
-                setTimeout(function() {
-                    toast.style.display = 'none';
-                }, 3000);
-            } else {
-                alert("Errore durante l'aggiunta al carrello (" + xhr.status + ")");
-            }
-        }
-    };
-
-    // 3. Gestione Timeout (15 secondi)
-    setTimeout(function() {
-        if (xhr.readyState < 4) {
-            xhr.abort();
-        }
-    }, 15000);
-
-    // 4. Preparazione e invio della richiesta POST
-    var url = "${pageContext.request.contextPath}/CarrelloServlet";
-    var params = "azione=add&id=" + encodeURIComponent(id) + 
-                 "&nome=" + encodeURIComponent(nome) + 
-                 "&prezzo=" + encodeURIComponent(prezzo);
-
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.setRequestHeader("Connection", "close");
-    xhr.send(params);
-}
-</script>
+</body>
+</html>

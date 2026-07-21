@@ -3,7 +3,7 @@ package model;
 public class DettaglioOrdine {
     private int idOrdine;
     private int idProdotto;
-    private double prezzo;
+    private double prezzo_vendita;
 
     public DettaglioOrdine() {}
 
@@ -12,6 +12,6 @@ public class DettaglioOrdine {
     public void setIdOrdine(int idOrdine) { this.idOrdine = idOrdine; }
     public int getIdProdotto() { return idProdotto; }
     public void setIdProdotto(int idProdotto) { this.idProdotto = idProdotto; }
-    public double getPrezzo() { return prezzo; }
-    public void setPrezzo(double prezzo) { this.prezzo = prezzo; }
+    public double getPrezzo_vendita() { return prezzo_vendita; }
+    public void setPrezzo(double prezzo_vendita) { this.prezzo_vendita = prezzo_vendita; }
 }

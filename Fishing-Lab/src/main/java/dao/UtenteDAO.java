@@ -34,6 +34,7 @@ public class UtenteDAO {
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     Utente u = new Utente();
+                    u.setId_utente(rs.getInt("id_utente"));
                     u.setNome(rs.getString("nome"));
                     u.setCognome(rs.getString("cognome"));
                     u.setEmail(rs.getString("email"));

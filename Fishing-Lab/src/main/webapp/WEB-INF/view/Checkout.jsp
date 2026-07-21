@@ -13,7 +13,7 @@
     List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
     double totale = 0.0;
     
-    // se il carrello è vuoto, rimanda alla home
+ 
     if (carrello == null || carrello.isEmpty()) {
         response.sendRedirect(request.getContextPath() + "/home");
         return;
@@ -27,7 +27,8 @@
         <div class="checkout-section dati-cliente">
             <h2>Dati di Spedizione e Pagamento</h2>
             
-            <form action="${pageContext.request.contextPath}/ConfermaOrdineServlet" method="POST">
+            <!-- CORREZIONE QUI: puntiamo a /CheckoutServlet -->
+            <form action="${pageContext.request.contextPath}/CheckoutServlet" method="POST">
                 
                 <h3>Indirizzo di Spedizione</h3>
                 
@@ -62,7 +63,7 @@
                 
                 <div class="form-group">
                     <label for="numero-carta">Numero della Carta</label>
-                    <input type="text" id="numero-carta" name="numeroCarta" required placeholder="0000 0000 0000 0000" maxlength="16">
+                    <input type="text" id="numero-carta" name="numerocarta" required placeholder="0000 0000 0000 0000" maxlength="16">
                 </div>
                 
                 <div class="form-row">
