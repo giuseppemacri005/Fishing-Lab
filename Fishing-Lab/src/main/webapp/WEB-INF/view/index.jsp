@@ -29,13 +29,18 @@
         </a>
         
         <% if (utente != null) { 
-            boolean isAdmin = "admin".equals(utente.getRuolo());
-            if (isAdmin) { 
-        %>
-                <a href="${pageContext.request.contextPath}/OrdiniServlet">📦 Tutti gli Ordini</a>
-        <%  } else { %>
-                <a href="${pageContext.request.contextPath}/OrdiniServlet">📦 I miei Ordini</a>
-        <%  } %>
+    
+    String ruolo = utente.getRuolo();
+    boolean isAdmin = (ruolo != null && ruolo.trim().equalsIgnoreCase("admin"));
+    
+    if (isAdmin) { 
+%>
+        <a href="${pageContext.request.contextPath}/OrdiniServlet">📦 Tutti gli Ordini</a>
+<%  } else { %>
+        <a href="${pageContext.request.contextPath}/OrdiniServlet">📦 I miei Ordini</a>
+<%  } 
+} 
+%>
 
             <span>Ciao, <%= utente.getNome() %></span>
             <a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a>

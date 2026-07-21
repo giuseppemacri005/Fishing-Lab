@@ -38,6 +38,7 @@ public class UtenteDAO {
                     u.setNome(rs.getString("nome"));
                     u.setCognome(rs.getString("cognome"));
                     u.setEmail(rs.getString("email"));
+                    u.setRuolo(rs.getRuolo("ruolo"));
                     return u;
                 }
             }
