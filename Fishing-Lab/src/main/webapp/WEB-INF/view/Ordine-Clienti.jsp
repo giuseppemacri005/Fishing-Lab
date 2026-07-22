@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I miei Ordini</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/Ordini.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/OrdineClienti.css">
 </head>
 <body>
 
@@ -15,7 +15,7 @@
 %>
 
 <main class="orders-container">
-    <h2>I miei Ordini 📦</h2>
+    <h2> Ordini effettuati 📦</h2>
 
     <% if (ordini == null || ordini.isEmpty()) { %>
         <div class="no-orders">
@@ -26,14 +26,14 @@
             <% for (Ordine o : ordini) { %>
                 <div class="order-card">
                     <div class="order-header">
-                        <span class="order-id">Ordine #<%= o.getIdOrdine() %></span>
-                        <span class="order-date"><%= o.getDataOrdine() %></span>
+                        <span class="order-id">Ordine #<%= o.getId_ordine() %></span>
+                        <span class="order-date"><%= o.getData_ordine() %></span>
                     </div>
 
                     <div class="order-details">
                         <p><strong>Totale:</strong> € <%= String.format("%.2f", o.getTotale()) %></p>
-                        <% if (o.getIndirizzoSpedizione() != null) { %>
-                            <p><strong>Indirizzo:</strong> <%= o.getIndirizzoSpedizione() %></p>
+                        <% if (o.getIndirizzo() != null) { %>
+                            <p><strong>Indirizzo:</strong> <%= o.getIndirizzo() %></p>
                         <% } %>
                     </div>
                 </div>

@@ -40,14 +40,14 @@
                     <tbody>
                         <% for (Prodotto p : prodotti) { %>
                             <tr>
-                                <td>#<%= p.getId() %></td>
+                                <td>#<%= p.getId_prodotto() %></td>
                                 
                                 <form action="${pageContext.request.contextPath}/AdminProdottoServlet" method="POST" class="inline-form">
                                     <input type="hidden" name="azione" value="modifica">
-                                    <input type="hidden" name="id" value="<%= p.getId() %>">
+                                    <input type="hidden" name="id" value="<%= p.getId_prodotto() %>">
                                     
                                     <td>
-                                        <input type="text" name="nome" value="<%= p.getNome() %>" required class="input-table">
+                                        <input type="text" name="nome" value="<%= p.getnome_prodotto() %>" required class="input-table">
                                     </td>
                                     <td>
                                         <input type="number" name="prezzo" step="0.01" min="0" value="<%= p.getPrezzo() %>" required class="input-table">
@@ -60,7 +60,7 @@
                                 <td>
                                     <form action="${pageContext.request.contextPath}/AdminProdottoServlet" method="POST" class="inline-form" onsubmit="return confirm('Sei sicuro di voler eliminare questo prodotto?');">
                                         <input type="hidden" name="azione" value="elimina">
-                                        <input type="hidden" name="id" value="<%= p.getId() %>">
+                                        <input type="hidden" name="id" value="<%= p.getId_prodotto() %>">
                                         <button type="submit" class="btn-delete">🗑️ Elimina</button>
                                     </form>
                                 </td>
@@ -85,17 +85,17 @@
                             <th>ID Utente</th>
                             <th>Data</th>
                             <th>Totale</th>
-                            <th>Indirizzo Spedizione</th>
+                            <th>Indirizzo </th>
                         </tr>
                     </thead>
                     <tbody>
                         <% for (Ordine o : ordini) { %>
                             <tr>
-                                <td><strong>#<%= o.getIdOrdine() %></strong></td>
+                                <td><strong>#<%= o.getId_ordine() %></strong></td>
                                 <td><%= o.getIdUtente() %></td>
-                                <td><%= o.getDataOrdine() %></td>
+                                <td><%= o.getData_ordine() %></td>
                                 <td>€ <%= String.format("%.2f", o.getTotale()) %></td>
-                                <td><%= o.getIndirizzoSpedizione() != null ? o.getIndirizzoSpedizione() : "-" %></td>
+                                <td><%= o.getIndirizzo() != null ? o.getIndirizzo() : "-" %></td>
                             </tr>
                         <% } %>
                     </tbody>

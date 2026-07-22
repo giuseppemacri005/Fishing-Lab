@@ -29,18 +29,16 @@
         </a>
         
         <% if (utente != null) { 
-    
-    String ruolo = utente.getRuolo();
-    boolean isAdmin = (ruolo != null && ruolo.trim().equalsIgnoreCase("admin"));
-    
-    if (isAdmin) { 
-%>
-        <a href="${pageContext.request.contextPath}/OrdiniServlet"> Zona Admin </a>
-<%  } else { %>
-        <a href="${pageContext.request.contextPath}/OrdiniServlet">📦 I miei Ordini</a>
-<%  } 
-} 
-%>
+            String ruolo = utente.getRuolo();
+            boolean isAdmin = (ruolo != null && ruolo.trim().equalsIgnoreCase("admin"));
+            
+            if (isAdmin) { 
+        %>
+        <a href="${pageContext.request.contextPath}/ModificheAdminServlet" class="btn-admin">⚙️ Pannello Modifiche Admin</a>
+                <a href="${pageContext.request.contextPath}/OrdiniServlet">📦 Zona Admin</a>
+        <%  } else { %>
+                <a href="${pageContext.request.contextPath}/OrdiniServlet">📦 I miei Ordini</a>
+        <%  } %>
 
             <span>Ciao, <%= utente.getNome() %></span>
             <a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a>
@@ -70,8 +68,8 @@
                         <p><%= p.getDescrizione() %></p>
                         <p>€ <%= String.format("%.2f", p.getPrezzo()) %></p>
                         
-                       
-                        <a href="${pageContext.request.contextPath}/ProdottoServlet?id=<%= p.getId_prodotto() %>" class="btn-vedi-prodotto">Vedi Prodotto</a>
+                        <!-- Bottone per visualizzare il dettaglio del singolo prodotto -->
+                        <a href="${pageContext.request.contextPath}/PagProdottoServlet?id=<%= p.getId_prodotto() %>" class="btn-vedi-prodotto">Vedi Prodotto</a>
                     </div>
                 </div>
         <%      } 
