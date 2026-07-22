@@ -34,7 +34,7 @@
             
             if (isAdmin) { 
         %>
-        <a href="${pageContext.request.contextPath}/ModificheAdminServlet" class="btn-admin">⚙️ Pannello Modifiche Admin</a>
+        <a href="${pageContext.request.contextPath}/ProdottoServlet" class="btn-admin">⚙️ Pannello Modifiche Admin</a>
                 <a href="${pageContext.request.contextPath}/OrdiniServlet">📦 Zona Admin</a>
         <%  } else { %>
                 <a href="${pageContext.request.contextPath}/OrdiniServlet">📦 I miei Ordini</a>
