@@ -16,7 +16,7 @@
 
 <main class="orders-container">
 
-    <!-- BOTTONE PER TORNARE ALLA HOME -->
+
     <div style="margin-bottom: 20px;">
         <a href="${pageContext.request.contextPath}/home" class="btn-home" style="text-decoration: none; padding: 8px 16px; background-color: #007bff; color: white; border-radius: 5px; display: inline-block; font-weight: bold;">
             🏠 Torna alla Home
