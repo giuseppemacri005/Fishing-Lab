@@ -35,7 +35,9 @@
         <div class="cart-list">
             <% 
                 for (Prodotto p : carrello) { 
-                    totale += p.getPrezzo();
+                    int quantita = p.getQuantita();
+                    double prezzoTotaleProdotto = p.getPrezzo() * quantita;
+                    totale += prezzoTotaleProdotto;
             %>
                 <div class="cart-item">
                     
@@ -46,15 +48,30 @@
                         <p><%= p.getDescrizione() %></p>
                     </div>
 
+                    <!-- Selettore Quantità -->
+                    <div class="quantity-control">
+                        <form action="${pageContext.request.contextPath}/CarrelloServlet" method="POST">
+                            <input type="hidden" name="azione" value="decrease">
+                            <input type="hidden" name="id" value="<%= p.getId_prodotto() %>">
+                            <button type="submit" class="btn-qty">-</button>
+                        </form>
+
+                        <span class="qty-number"><%= quantita %></span>
+
+                        <form action="${pageContext.request.contextPath}/CarrelloServlet" method="POST">
+                            <input type="hidden" name="azione" value="increase">
+                            <input type="hidden" name="id" value="<%= p.getId_prodotto() %>">
+                            <button type="submit" class="btn-qty">+</button>
+                        </form>
+                    </div>
+
                     <div class="item-price">
-                        € <%= String.format("%.2f", p.getPrezzo()) %>
+                        € <%= String.format("%.2f", prezzoTotaleProdotto) %>
                     </div>
 
                     <form action="${pageContext.request.contextPath}/CarrelloServlet" method="POST">
                         <input type="hidden" name="azione" value="remove">
                         <input type="hidden" name="id" value="<%= p.getId_prodotto() %>">
-                       
-
                         <button type="submit" class="btn-remove">Elimina</button>
                     </form>
                 </div>
@@ -74,7 +91,6 @@
                     </form>
                 <% } else { %>
                     <div class="cart-login-notice">
-                       
                         <a href="${pageContext.request.contextPath}/LoginServlet" class="btn-checkout">Accedi / Registrati</a>
                     </div>
                 <% } %>

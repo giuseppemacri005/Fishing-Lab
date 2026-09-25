@@ -25,7 +25,17 @@
 
     <div>
         <a href="${pageContext.request.contextPath}/CarrelloServlet">🛒 Carrello 
-            <span id="carrello-badge"><%= count > 0 ? count : "" %></span>
+          <%
+  
+    int totaleArticoli = 0;
+
+    if (carrello != null) {
+        for (Prodotto p : carrello) {
+            totaleArticoli += p.getQuantita(); // <--- Somma la quantità di ogni prodotto
+        }
+    }
+%>
+<span class="cart-badge"><%= totaleArticoli %></span>
         </a>
         
         <% if (utente != null) { 
